@@ -1,6 +1,24 @@
 import './App.css'
 
 function App() {
+  const Jazzve= {
+    name: "Jazzve",
+    age: 25,
+    isActive: true,
+    address: {
+      street: "Komitas",
+      city: {
+        title:"Yerevan",
+        postal: "10"
+      }
+    },
+    teas: [
+        "Black tea", "Green tea", "White tea", "Yellow tea"
+    ]
+  }
+
+  console.log(Jazzve.teas[3])
+
   return (
       <div className="app">
         <div>

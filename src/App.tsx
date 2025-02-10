@@ -1,50 +1,13 @@
 import './App.css'
+import ToDoList from "./ToDoList.tsx";
 
 function App() {
-  const Jazzve= {
-    name: "Jazzve",
-    age: 25,
-    isActive: true,
-    address: {
-      street: "Komitas",
-      city: {
-        title:"Yerevan",
-        postal: "10"
-      }
-    },
-    teas: [
-        "Black tea", "Green tea", "White tea", "Yellow tea"
-    ]
-  }
 
-  console.log(Jazzve.teas[3])
+  return (<>
 
-  return (
-      <div className="app">
-        <div>
-          <h3>What to learn</h3>
-          <div>
-            <input/>
-            <button>+</button>
-          </div>
-          <ul>
-            <li>
-              <input type="checkbox" checked={true}/> <span>HTML&CSS</span>
-            </li>
-            <li>
-              <input type="checkbox" checked={true}/> <span>JS</span>
-            </li>
-            <li>
-              <input type="checkbox" checked={false}/> <span>React</span>
-            </li>
-          </ul>
-          <div>
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
-          </div>
-        </div>
-      </div>
+          <ToDoList/>
+
+      </>
   )
 }
 

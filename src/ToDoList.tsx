@@ -2,6 +2,7 @@ import './App.css'
 
 function ToDoList(props: any) {
     console.log(props.tasks);
+    console.log(props.buttons);
 
     return (
         <div className="app">
@@ -21,6 +22,12 @@ function ToDoList(props: any) {
                         </>)
                     })
                     }
+                    {props.buttons.map((element:any) => {
+                        return (<>
+                            <button>{element.name}</button>
+                        </>)
+                    })
+                    }
 
                     {/*<li>*/}
                     {/*  <input type="checkbox" checked={props.tasks[0].isDone}/> <span>{props.tasks[0].name}</span>*/}
@@ -33,9 +40,9 @@ function ToDoList(props: any) {
                     {/*</li>*/}
                 </ul>
                 <div>
-                    <button>All</button>
-                    <button>Active</button>
-                    <button>Completed</button>
+                    {/*<button>{props.buttons}</button>*/}
+                    {/*<button>{props.buttons}</button>*/}
+                    {/*<button>{props.buttons}</button>*/}
                 </div>
             </div>
         </div>

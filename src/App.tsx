@@ -17,8 +17,24 @@ const tasks = [
         id: 3,
         name: "Art",
         isDone: true,
-    }
+    },
 ]
+
+// const secondTask = [
+//
+//     {id: 4, name: "Task1", isDone: true},
+//     {id: 5, name: "Task2", isDone: true},
+//     {id: 6, name: "Task3", isDone: false},
+//
+// ]
+//
+//
+// const thirdTask = [
+//     {id: 7, name: "Task4", isDone: false},
+//     {id: 8, name: "Task5", isDone: true},
+//     {id: 9, name: "Task6", isDone: true},
+// ]
+
 const buttons = [
     {
         id: 1,
@@ -32,16 +48,15 @@ const buttons = [
         id: 3,
         name: "Button3",
     }
-
 ]
 
 function App() {
 
     return (<>
 
-            <ToDoList title={"What to Learn 2"} tasks={tasks} buttons={buttons}/>
-            <ToDoList title={"What to learn 3"} tasks={tasks} buttons={buttons}/>
-            <ToDoList title={"What to learn 4"} tasks={tasks} buttons={buttons}/>
+            <ToDoList title={"Necessarily Languages"} tasks={tasks} buttons={buttons}/>
+            <ToDoList title={"Preferred to Know"} tasks={tasks} buttons={buttons}/>
+            <ToDoList title={"Optional"} tasks={tasks} buttons={buttons}/>
 
         </>
     )

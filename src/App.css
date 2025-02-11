@@ -1,6 +1,12 @@
 .app {
   padding: 30px;
-  display: flex;
+  display: inline-block;
+  background-color: #6d8a6a;
+  margin: 20px;
+  border: 5px solid black;
+}
+.app:hover {
+  background-color: #769173;
 }
 
 .app > div {

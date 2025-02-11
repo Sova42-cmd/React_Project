@@ -1,8 +1,11 @@
 import './App.css'
 
 function ToDoList(props: any) {
+
     console.log(props.tasks);
     console.log(props.buttons);
+    console.log(props.secondTask);
+    console.log(props.thirdTask);
 
     return (
         <div className="app">
@@ -14,15 +17,32 @@ function ToDoList(props: any) {
                 </div>
                 <ul>
 
-                    {props.tasks.map((element:any) => {
+                    {props.tasks.map((element: any) => {
                         return (<>
                             <li>
-                              <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
+                                <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
                             </li>
                         </>)
                     })
                     }
-                    {props.buttons.map((element:any) => {
+                    {/*{props.secondTask.map((element: any) => {*/}
+                    {/*    return (<>*/}
+                    {/*        <li>*/}
+                    {/*            <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>*/}
+                    {/*        </li>*/}
+                    {/*    </>)*/}
+                    {/*})*/}
+                    {/*}*/}
+                    {/*{props.thirdTask.map((element: any) => {*/}
+                    {/*    return (<>*/}
+                    {/*        <li>*/}
+                    {/*            <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>*/}
+                    {/*        </li>*/}
+                    {/*    </>)*/}
+                    {/*/!*})*!/*/}
+                    {/*}*/}
+
+                    {props.buttons.map((element: any) => {
                         return (<>
                             <button>{element.name}</button>
                         </>)

@@ -38,15 +38,15 @@ const thirdTasks = [
 const buttons = [
     {
         id: 1,
-        name: "Button1",
+        name: "All",
     },
     {
         id: 2,
-        name: "Button2",
+        name: "Active",
     },
     {
         id: 3,
-        name: "Button3",
+        name: "Completed",
     }
 ]
 
@@ -57,6 +57,7 @@ function App() {
             <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons}/>
             <ToDoList title={"Preferred to Know"} allTasks={secondTasks} buttons={buttons}/>
             <ToDoList title={"Optional"} allTasks={thirdTasks} buttons={buttons}/>
+            <ToDoList title={"Inch"} allTasks={[]} buttons={buttons}/>
 
         </>
     )

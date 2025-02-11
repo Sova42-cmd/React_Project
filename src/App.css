@@ -12,3 +12,6 @@
 .app > div {
   margin-right: 50px;
 }
+.app button {
+  margin-top: 15px;
+}

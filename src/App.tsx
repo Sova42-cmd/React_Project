@@ -1,5 +1,35 @@
 import './App.css'
 import ToDoList from "./ToDoList.tsx";
+//
+// import React from "react";
+//
+// type User = {
+//     id: number;
+//     name: string;
+//     email: string;
+// };
+
+// const users: User[] = [
+//     { id: 1, name: "Alice", email: "alice@example.com" },
+//     { id: 2, name: "Bob", email: "bob@example.com" },
+//     { id: 3, name: "Charlie", email: "charlie@example.com" },
+// ];
+//
+// const UserList: React.FC = () => {
+//     return (
+//         <div className="p-4">
+//             <h2 className="text-xl font-bold">User List</h2>
+//             <ul className="mt-2">
+//                 {users.map((user) => (
+//                     <li key={user.id} className="p-2 border-b">
+//                         <strong>{user.name}</strong> - {user.email}
+//                     </li>
+//                 ))}
+//             </ul>
+//         </div>
+//     );
+// };
+
 
 const firstTasks = [
     {

@@ -1,17 +1,19 @@
 .app {
   padding: 30px;
   display: inline-block;
-  background-color: #6d8a6a;
+  background-color: #81a37f;
   margin: 20px;
   border: 5px solid black;
 }
 .app:hover {
-  background-color: #769173;
+  background-color: #8dad8b;
 }
 
 .app > div {
   margin-right: 50px;
 }
 .app button {
-  margin-top: 15px;
+  margin-top: 20px;
+  margin-left: 3px;
 }
+

@@ -8,7 +8,7 @@ function Button(props: any) {
 
 function ToDoList(props: any) {
 
-    console.log(3>2?"yes":"no")
+    console.log(3 > 2 ? "yes" : "no")
 
     return (
         <div className="app">
@@ -20,24 +20,26 @@ function ToDoList(props: any) {
                 </div>
                 <ul>
                     {
-                        props.allTasks.length>0?
-                        props.allTasks.map((element: any) => {
-                        return (
-                            <li key={element.id}>
-                                <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
-                            </li>
-                        )
-                    })
-                            :<li>"There are no tasks"</li>
-
+                        props.allTasks.length > 0 ?
+                            props.allTasks.map((element: any) => {
+                                return (
+                                    <li key={element.id}>
+                                        <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
+                                    </li>
+                                )
+                            })
+                            : <li>"There are no tasks"</li>
                     }
 
-                    {props.buttons.map((element: any) => {
-                        return ( <>
-                            {/*<button key={element.id}>{element.name}</button>*/}
-                            <Button name={element.name} key={element.id}/>
-                        </>)
-                    })
+                    {
+                        props.allTasks.length > 0 ?
+                            props.buttons.map((element: any) => {
+                                return (<>
+                                    {/*<button key={element.id}>{element.name}</button>*/}
+                                    <Button name={element.name} key={element.id}/>
+                                </>)
+                            })
+                            : <button>"Test button"</button>
                     }
 
                 </ul>

@@ -1,7 +1,6 @@
 import './App.css'
 import ToDoList from "./ToDoList.tsx";
 
-
 const firstTasks = [
     {
         id: 1,
@@ -36,18 +35,25 @@ const thirdTasks = [
 ]
 
 const buttons = [
-    {
-        id: 1,
-        name: "All",
-    },
-    {
-        id: 2,
-        name: "Active",
-    },
-    {
-        id: 3,
-        name: "Completed",
-    }
+    {id: 1, name: "All"},
+    {id: 2, name: "Active"},
+    {id: 3, name: "Completed"}
+]
+
+const testButtons = [
+    {id: 4, name: "Render New"},
+]
+
+const forthTasks = [
+    {id: 10, name: "Task 7", isDone: true},
+    {id: 11, name: "Task 8", isDone: true},
+    {id: 12, name: "Task 9", isDone: true},
+]
+
+const fifthTasks = [
+    {id: 11, name: "Task 10", isDone: false},
+    {id: 12, name: "Task 11", isDone: false},
+    {id: 13, name: "Task 12", isDone: false},
 ]
 
 function App() {
@@ -57,7 +63,8 @@ function App() {
             <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons}/>
             <ToDoList title={"Preferred to Know"} allTasks={secondTasks} buttons={buttons}/>
             <ToDoList title={"Optional"} allTasks={thirdTasks} buttons={buttons}/>
-            <ToDoList title={"Inch"} allTasks={[]} buttons={buttons}/>
+            <ToDoList title={"Without a Title 1"} allTasks={forthTasks} buttons={buttons}/>
+            <ToDoList title={"Without a Title 2"} allTasks={fifthTasks} buttons={testButtons}/>
 
         </>
     )

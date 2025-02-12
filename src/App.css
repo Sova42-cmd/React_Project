@@ -1,12 +1,12 @@
 .app {
   padding: 30px;
   display: inline-block;
-  background-color: #81a37f;
+  background-color: #6d6470;
   margin: 20px;
   border: 5px solid black;
 }
 .app:hover {
-  background-color: #8dad8b;
+  background-color: #7c7380;
 }
 
 .app > div {

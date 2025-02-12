@@ -39,7 +39,7 @@ function ToDoList(props: any) {
                                     <Button name={element.name} key={element.id}/>
                                 </>)
                             })
-                            : <button>"Test button"</button>
+                            : <button>Test Button</button>
                     }
 
                 </ul>

@@ -1,8 +1,6 @@
-# IT-INCUBATOR Todolist Project
+# David's Todolist Project
 
 ## React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite.
 
 ## Getting Started
 
@@ -20,4 +18,3 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Happy hacking 🚀

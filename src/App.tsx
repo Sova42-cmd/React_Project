@@ -52,7 +52,7 @@ const forthTasks = [
 
 const fifthTasks = [
     {id: 13, name: "Task 10", isDone: false},
-    {id: 14, name: "Task 11", isDone: false},
+    {id: 14, name: "Task 11", isDone: true},
     {id: 15, name: "Task 12", isDone: false},
 ]
 
@@ -60,17 +60,20 @@ const fifthTasks = [
 function App() {
 
     // function deleteTask (message: any) {console.log(message)}
-    const deleteTask = (message:any) => {
-        console.log(message)
-    }
+    const allButton = (message:any) => {console.log(message)};
+    console.log(
+        fifthTasks.filter((element:any)=>{
+            return element.id>10?true:false
+        })
+    )
 
     return (<>
 
-            <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons} deleteTask={deleteTask}/>
-            <ToDoList title={"Preferred to Know"} allTasks={secondTasks} buttons={buttons} deleteTask={deleteTask}/>
-            <ToDoList title={"Optional"} allTasks={thirdTasks} buttons={buttons} deleteTask={deleteTask}/>
-            <ToDoList title={"Without a Title 1"} allTasks={forthTasks} buttons={buttons} deleteTask={deleteTask}/>
-            <ToDoList title={"Without a Title 2"} allTasks={fifthTasks} buttons={testButtons} deleteTask={deleteTask}/>
+            <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons} allButton={allButton}/>
+            <ToDoList title={"Preferred to Know"} allTasks={secondTasks} buttons={buttons} />
+            <ToDoList title={"Optional"} allTasks={thirdTasks} buttons={buttons} />
+            <ToDoList title={"Without a Title 1"} allTasks={forthTasks} buttons={buttons} />
+            <ToDoList title={"Without a Title 2"} allTasks={fifthTasks} buttons={testButtons} />
 
         </>
     )

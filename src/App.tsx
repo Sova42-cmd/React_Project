@@ -1,35 +1,5 @@
 import './App.css'
 import ToDoList from "./ToDoList.tsx";
-//
-// import React from "react";
-//
-// type User = {
-//     id: number;
-//     name: string;
-//     email: string;
-// };
-
-// const users: User[] = [
-//     { id: 1, name: "Alice", email: "alice@example.com" },
-//     { id: 2, name: "Bob", email: "bob@example.com" },
-//     { id: 3, name: "Charlie", email: "charlie@example.com" },
-// ];
-//
-// const UserList: React.FC = () => {
-//     return (
-//         <div className="p-4">
-//             <h2 className="text-xl font-bold">User List</h2>
-//             <ul className="mt-2">
-//                 {users.map((user) => (
-//                     <li key={user.id} className="p-2 border-b">
-//                         <strong>{user.name}</strong> - {user.email}
-//                     </li>
-//                 ))}
-//             </ul>
-//         </div>
-//     );
-// };
-
 
 const firstTasks = [
     {
@@ -81,20 +51,26 @@ const forthTasks = [
 ]
 
 const fifthTasks = [
-    {id: 11, name: "Task 10", isDone: false},
-    {id: 12, name: "Task 11", isDone: false},
-    {id: 13, name: "Task 12", isDone: false},
+    {id: 13, name: "Task 10", isDone: false},
+    {id: 14, name: "Task 11", isDone: false},
+    {id: 15, name: "Task 12", isDone: false},
 ]
+
 
 function App() {
 
+    // function deleteTask (message: any) {console.log(message)}
+    const deleteTask = (message:any) => {
+        console.log(message)
+    }
+
     return (<>
 
-            <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons}/>
-            <ToDoList title={"Preferred to Know"} allTasks={secondTasks} buttons={buttons}/>
-            <ToDoList title={"Optional"} allTasks={thirdTasks} buttons={buttons}/>
-            <ToDoList title={"Without a Title 1"} allTasks={forthTasks} buttons={buttons}/>
-            <ToDoList title={"Without a Title 2"} allTasks={fifthTasks} buttons={testButtons}/>
+            <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons} deleteTask={deleteTask}/>
+            <ToDoList title={"Preferred to Know"} allTasks={secondTasks} buttons={buttons} deleteTask={deleteTask}/>
+            <ToDoList title={"Optional"} allTasks={thirdTasks} buttons={buttons} deleteTask={deleteTask}/>
+            <ToDoList title={"Without a Title 1"} allTasks={forthTasks} buttons={buttons} deleteTask={deleteTask}/>
+            <ToDoList title={"Without a Title 2"} allTasks={fifthTasks} buttons={testButtons} deleteTask={deleteTask}/>
 
         </>
     )

@@ -1,14 +1,7 @@
 import './App.css'
-
-function Button(props: any) {
-    return (
-        <button>{props.name}</button>
-    )
-}
+import Button from './Button'
 
 function ToDoList(props: any) {
-
-    console.log(3 > 2 ? "yes" : "no")
 
     return (
         <div className="app">
@@ -25,6 +18,7 @@ function ToDoList(props: any) {
                                 return (
                                     <li key={element.id}>
                                         <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
+                                        <button onClick={() =>props.deleteTask("removed "+element.id)}>+</button>
                                     </li>
                                 )
                             })

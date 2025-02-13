@@ -1,7 +1,7 @@
 import './App.css'
 import ToDoList from "./ToDoList.tsx";
 
-const firstTasks = [
+let firstTasks = [
     {
         id: 1,
         name: "Science",
@@ -60,23 +60,30 @@ const fifthTasks = [
 function App() {
 
     // function deleteTask (message: any) {console.log(message)}
-    const allButton = (message:any) => {console.log(message)};
-    console.log(
-        fifthTasks.filter((element:any)=>{
-            return element.id>10?true:false
-        })
-    )
+    // const allButton = (message:any) => {console.log(message)};
+    //
+    //  const firstTasksFiltered = firstTasks.filter((element:any)=>{
+    //         return element.isDone?false:true
+    //     })
 
-    return (<>
+    const deleteTask = (taskId: number) => {
+        firstTasks = firstTasks.filter((element: any) => {
+            return element.id === taskId ? false : true
+        });
+    }
 
-            <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons} allButton={allButton}/>
-            <ToDoList title={"Preferred to Know"} allTasks={secondTasks} buttons={buttons} />
-            <ToDoList title={"Optional"} allTasks={thirdTasks} buttons={buttons} />
-            <ToDoList title={"Without a Title 1"} allTasks={forthTasks} buttons={buttons} />
-            <ToDoList title={"Without a Title 2"} allTasks={fifthTasks} buttons={testButtons} />
 
-        </>
-    )
+
+return (<>
+
+        <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons} deleteTask={deleteTask}/>
+        <ToDoList title={"Preferred to Know"} allTasks={secondTasks} buttons={buttons}/>
+        <ToDoList title={"Optional"} allTasks={thirdTasks} buttons={buttons}/>
+        <ToDoList title={"Without a Title 1"} allTasks={forthTasks} buttons={buttons}/>
+        <ToDoList title={"Without a Title 2"} allTasks={fifthTasks} buttons={testButtons}/>
+
+    </>
+)
 }
 
 export default App

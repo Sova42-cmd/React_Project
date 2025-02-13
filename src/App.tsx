@@ -1,6 +1,5 @@
 import './App.css'
 import ToDoList from "./ToDoList.tsx";
-import {loadConfigFromFile} from "vite";
 import {useState} from "react";
 
 let firstTasks = [
@@ -63,6 +62,9 @@ function App() {
 
     const [filteredTasks, setFilteredTasks] = useState(firstTasks)
 
+    // let A=1
+    let [A, setA]=useState(1)
+
     // function deleteTask (message: any) {console.log(message)}
     // const allButton = (message:any) => {console.log(message)};
     //
@@ -79,6 +81,16 @@ function App() {
 
 
     return (<>
+
+            {/*Add 0 button, which will reset A*/}
+            {/*Search info about useState(Hook)*/}
+
+            <h1>{A}</h1>
+            <button onClick={()=> {
+                // A=A + 1
+                setA(A+1)
+                console.log(A)
+            }}>number</button>
 
             <ToDoList title={"Necessarily Languages"} allTasks={filteredTasks} buttons={buttons}
                       deleteTask={deleteTask}/>

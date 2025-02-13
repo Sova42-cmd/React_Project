@@ -1,5 +1,7 @@
 import './App.css'
 import ToDoList from "./ToDoList.tsx";
+import {loadConfigFromFile} from "vite";
+import {useState} from "react";
 
 let firstTasks = [
     {
@@ -59,6 +61,8 @@ const fifthTasks = [
 
 function App() {
 
+    const [filteredTasks, setFilteredTasks] = useState(firstTasks)
+
     // function deleteTask (message: any) {console.log(message)}
     // const allButton = (message:any) => {console.log(message)};
     //
@@ -67,23 +71,24 @@ function App() {
     //     })
 
     const deleteTask = (taskId: number) => {
-        firstTasks = firstTasks.filter((element: any) => {
+        setFilteredTasks(filteredTasks.filter((element: any) => {
             return element.id === taskId ? false : true
-        });
+        })
+        )
     }
 
 
+    return (<>
 
-return (<>
+            <ToDoList title={"Necessarily Languages"} allTasks={filteredTasks} buttons={buttons}
+                      deleteTask={deleteTask}/>
+            <ToDoList title={"Preferred to Know"} allTasks={secondTasks} buttons={buttons}/>
+            <ToDoList title={"Optional"} allTasks={thirdTasks} buttons={buttons}/>
+            <ToDoList title={"Without a Title 1"} allTasks={forthTasks} buttons={buttons}/>
+            <ToDoList title={"Without a Title 2"} allTasks={fifthTasks} buttons={testButtons}/>
 
-        <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons} deleteTask={deleteTask}/>
-        <ToDoList title={"Preferred to Know"} allTasks={secondTasks} buttons={buttons}/>
-        <ToDoList title={"Optional"} allTasks={thirdTasks} buttons={buttons}/>
-        <ToDoList title={"Without a Title 1"} allTasks={forthTasks} buttons={buttons}/>
-        <ToDoList title={"Without a Title 2"} allTasks={fifthTasks} buttons={testButtons}/>
-
-    </>
-)
+        </>
+    )
 }
 
 export default App

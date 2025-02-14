@@ -1,5 +1,6 @@
 import './App.css'
 
+
 function ToDoList(props: any) {
 
     return (
@@ -17,14 +18,14 @@ function ToDoList(props: any) {
                                 return (
                                     <li key={element.id}>
                                         <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
-                                        <button onClick={() =>props.deleteTask(element.id)}>x</button>
+                                        <button onClick={() => {props.ejectTask(element.id)}}>x</button>
                                     </li>
                                 )
                             })
                             : <li>"There are no tasks"</li>
                     }
 
-                    <button onClick={() =>props.allButton("Hello I'm all button")}>All</button>
+                    <button onClick={() => props.allButton("Hello I'm all button")}>All</button>
                     <button onClick={() => props.allButton("Hello I'm active button")}>Active</button>
                     <button onClick={() => props.allButton("Hello I'm completed button")}>Completed</button>
 
@@ -34,8 +35,9 @@ function ToDoList(props: any) {
                 </div>
             </div>
         </div>
+
     )
 }
 
-export default ToDoList
+export default ToDoList;
 // export default UserList;

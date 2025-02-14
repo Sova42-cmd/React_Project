@@ -1,6 +1,7 @@
 import './App.css'
 import ToDoList from "./ToDoList.tsx";
-import {useState} from "react";
+import Counter from "./Counter.tsx";
+
 
 let firstTasks = [
     {
@@ -56,14 +57,12 @@ const fifthTasks = [
     {id: 14, name: "Task 11", isDone: true},
     {id: 15, name: "Task 12", isDone: false},
 ]
-
-
 function App() {
 
-    const [filteredTasks, setFilteredTasks] = useState(firstTasks)
-
+    // const [filteredTasks, setFilteredTasks] = useState(firstTasks)
+    // //
     // let A=1
-    let [A, setA]=useState(1)
+    // let [A, setA] =  useState<number>(1);
 
     // function deleteTask (message: any) {console.log(message)}
     // const allButton = (message:any) => {console.log(message)};
@@ -72,35 +71,40 @@ function App() {
     //         return element.isDone?false:true
     //     })
 
-    const deleteTask = (taskId: number) => {
-        setFilteredTasks(filteredTasks.filter((element: any) => {
-            return element.id === taskId ? false : true
-        })
-        )
-    }
+    // const deleteTask = (taskId: number) => {
+    //     setFilteredTasks(filteredTasks.filter((element: any) => {
+    //         return element.id === taskId ? false : true
+    //     })
+    //     )
+    // }
 
+   // const ejectTask = (element: string) => {
+   //     console.log(element);
+   // }
 
     return (<>
 
             {/*Add 0 button, which will reset A*/}
             {/*Search info about useState(Hook)*/}
 
-            <h1>{A}</h1>
-            <button onClick={()=> {
-                // A=A + 1
-                setA(A+1)
-                console.log(A)
-            }}>number</button>
+            {/*<h1>{A}</h1>*/}
+            {/*<button onClick={()=> {*/}
+            {/*    A=A + 1*/}
+            {/*    setA(A+1)*/}
+            {/*    console.log(A)*/}
+            {/*}}>number</button>*/}
 
-            <ToDoList title={"Necessarily Languages"} allTasks={filteredTasks} buttons={buttons}
-                      deleteTask={deleteTask}/>
+            <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons}
+                      // deleteTask={deleteTask}
+            />
             <ToDoList title={"Preferred to Know"} allTasks={secondTasks} buttons={buttons}/>
             <ToDoList title={"Optional"} allTasks={thirdTasks} buttons={buttons}/>
             <ToDoList title={"Without a Title 1"} allTasks={forthTasks} buttons={buttons}/>
             <ToDoList title={"Without a Title 2"} allTasks={fifthTasks} buttons={testButtons}/>
-
+            <Counter></Counter>
         </>
     )
 }
+
 
 export default App

@@ -1,28 +1,27 @@
+import './Counter.css'
+
 import { useState } from "react";
 function Counter() {
 
-    let A = 0;
+    // let A = 0;
 
-    const [counter, setCounter] = useState(A);
+    const [A, setA] = useState(0);
 
     const increase = () => {
-        A = A + 1;
-        setCounter(A);
+        setA(A+1);
     };
 
     const decrease = () => {
-        A = A-1;
-        setCounter(A);
+        setA(A-1);
     };
 
     const reset = () => {
-        A = 0;
-        setCounter(A);
+        setA(0);
     };
 
     return (
-        <div>
-            <h1>Counter: {counter}</h1>
+        <div className="Counter">
+            <h2>Counter: {A}</h2>
             <button onClick={increase}>Increase</button>
             <button onClick={decrease}>Decrease</button>
             <button onClick={reset}>Reset</button>

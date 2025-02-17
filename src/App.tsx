@@ -59,12 +59,17 @@ const fifthTasks = [
 
 const ages = [12,14,15,17,18,20,24,29,49,65]
 const adults = ages.filter(isAdult)
+const children = ages.filter(isChildren)
 
 function isAdult(element:any){
     return element >= 18;
 }
 
-console.log(adults)
+function isChildren(element:any){
+    return element < 18;
+}
+
+console.log(children)
 
 function App() {
 

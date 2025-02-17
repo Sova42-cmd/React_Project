@@ -18,7 +18,8 @@ function ToDoList(props: any) {
                                 return (
                                     <li key={element.id}>
                                         <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
-                                        <button onClick={() => {props.ejectTask(element.id)}}>x</button>
+                                        <button onClick={() => {}}>x
+                                        </button>
                                     </li>
                                 )
                             })

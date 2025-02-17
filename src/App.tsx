@@ -42,15 +42,26 @@ const fifthTasks = [
     {id: 14, name: "Task 11", isDone: true},
     {id: 15, name: "Task 12", isDone: false},
 ]
+
+let numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+let evenNums = numbers.filter(isEven)
+
+console.log(evenNums)
+
+function isEven(element:any){
+    return element % 2 === 0;
+}
+
 function App() {
+
+    // const allButton = (message:any) => {console.log(message)};
 
     // const [filteredTasks, setFilteredTasks] = useState(firstTasks)
     // //
 
     // function deleteTask (message: any) {console.log(message)}
-    // const allButton = (message:any) => {console.log(message)};
     //
-    //  const firstTasksFiltered = firstTasks.filter((element:any)=>{
+    // const firstTasksFiltered = firstTasks.filter((element:any)=>{
     //         return element.isDone?false:true
     //     })
 
@@ -61,16 +72,13 @@ function App() {
     //     )
     // }
 
-   // const ejectTask = (element: string) => {
-   //     console.log(element);
-   // }
 
     return (<>
 
             {/*Search info about useState(Hook)*/}
 
             <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons}
-                      // deleteTask={deleteTask}
+                // deleteTask={deleteTask}
             />
             <ToDoList title={"Preferred to Know"} allTasks={secondTasks} buttons={buttons}/>
             <ToDoList title={"Optional"} allTasks={thirdTasks} buttons={buttons}/>

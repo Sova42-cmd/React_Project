@@ -57,19 +57,21 @@ const fifthTasks = [
 //     return element % 2 !== 0;
 // }
 
-const ages = [12,14,15,17,18,20,24,29,49,65]
-const adults = ages.filter(isAdult)
-const children = ages.filter(isChildren)
+const words = ["orange", "apple", "banana", "pomegranate", "kiwi", "cherry","tomato", "cucumber"];
+const shortWords = words.filter(filterShortWords)
+const longWords =words.filter(filterLongWords)
 
-function isAdult(element:any){
-    return element >= 18;
+function filterShortWords(element:any){
+    return element.length <= 6;
 }
 
-function isChildren(element:any){
-    return element < 18;
+function filterLongWords(element:any){
+    return element.length > 6;
 }
 
-console.log(children)
+console.log(longWords);
+
+
 
 function App() {
 

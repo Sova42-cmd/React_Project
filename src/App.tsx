@@ -43,19 +43,28 @@ const fifthTasks = [
     {id: 15, name: "Task 12", isDone: false},
 ]
 
-let numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
-let evenNums = numbers.filter(isEven)
-let oddNums = numbers.filter(isOdd)
+// let numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+// let evenNums = numbers.filter(isEven)
+// let oddNums = numbers.filter(isOdd)
+//
+// console.log(oddNums)
+//
+// function isEven(element:any){
+//     return element % 2 === 0;
+// }
+//
+// function isOdd(element:any){
+//     return element % 2 !== 0;
+// }
 
-console.log(oddNums)
+const ages = [12,14,15,17,18,20,24,29,49,65]
+const adults = ages.filter(isAdult)
 
-function isEven(element:any){
-    return element % 2 === 0;
+function isAdult(element:any){
+    return element >= 18;
 }
 
-function isOdd(element:any){
-    return element % 2 !== 0;
-}
+console.log(adults)
 
 function App() {
 

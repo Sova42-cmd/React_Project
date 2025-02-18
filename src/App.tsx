@@ -1,7 +1,8 @@
 import './App.css'
 import ToDoList from "./ToDoList.tsx";
 import Counter from "./Counter.tsx";
-import {useState} from "react";
+import {createLogger} from "vite";
+// import {useState} from "react";
 
 
 let firstTasks = [
@@ -58,24 +59,24 @@ const fifthTasks = [
 //     return element % 2 !== 0;
 // }
 
-const words = ["orange", "apple", "banana", "pomegranate", "kiwi", "cherry", "tomato", "cucumber"];
-const shortWords = words.filter(filterShortWords)
-const longWords = words.filter(filterLongWords)
-
-function filterShortWords(element: any) {
-    return element.length <= 6;
-}
-
-function filterLongWords(element: any) {
-    return element.length > 6;
-}
-
-console.log(longWords);
+// const words = ["orange", "apple", "banana", "pomegranate", "kiwi", "cherry", "tomato", "cucumber"];
+// const shortWords = words.filter(filterShortWords)
+// const longWords = words.filter(filterLongWords)
+//
+// function filterShortWords(element: any) {
+//     return element.length <= 6;
+// }
+//
+// function filterLongWords(element: any) {
+//     return element.length > 6;
+// }
+//
+// console.log(longWords);
 
 
 function App() {
 
-    const [filteredTasks, setFilteredTasks] = useState(firstTasks)
+    // const [filteredTasks, setFilteredTasks] = useState(firstTasks)
 
     // const deleteTask = (taskId: number) => {
     //     setFilteredTasks(filteredTasks.filter((element: any) => {
@@ -84,10 +85,20 @@ function App() {
     //     )
     // }
 
+    // function telephone(randomId:any, messageFromChild:any) {
+    //     return console.log("Just a random text"+randomId+messageFromChild)
+    // }
+    //
+
+    function mobile(randomId:any, arbitraryId:any) {
+        return console.log("Random boring text "+randomId+arbitraryId)
+    }
+
 
     return (<>
+
             <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons}
-                // deleteTask={deleteTask}
+            phone={mobile}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

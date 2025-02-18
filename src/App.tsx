@@ -1,6 +1,7 @@
 import './App.css'
 import ToDoList from "./ToDoList.tsx";
 import Counter from "./Counter.tsx";
+import {useState} from "react";
 
 
 let firstTasks = [
@@ -57,54 +58,42 @@ const fifthTasks = [
 //     return element % 2 !== 0;
 // }
 
-const words = ["orange", "apple", "banana", "pomegranate", "kiwi", "cherry","tomato", "cucumber"];
+const words = ["orange", "apple", "banana", "pomegranate", "kiwi", "cherry", "tomato", "cucumber"];
 const shortWords = words.filter(filterShortWords)
-const longWords =words.filter(filterLongWords)
+const longWords = words.filter(filterLongWords)
 
-function filterShortWords(element:any){
+function filterShortWords(element: any) {
     return element.length <= 6;
 }
 
-function filterLongWords(element:any){
+function filterLongWords(element: any) {
     return element.length > 6;
 }
 
 console.log(longWords);
 
 
-
 function App() {
 
-    // const allButton = (message:any) => {console.log(message)};
-
-    // const [filteredTasks, setFilteredTasks] = useState(firstTasks)
-    // //
-
-    // function deleteTask (message: any) {console.log(message)}
-    //
-    // const firstTasksFiltered = firstTasks.filter((element:any)=>{
-    //         return element.isDone?false:true
-    //     })
+    const [filteredTasks, setFilteredTasks] = useState(firstTasks)
 
     // const deleteTask = (taskId: number) => {
     //     setFilteredTasks(filteredTasks.filter((element: any) => {
-    //         return element.id === taskId ? false : true
-    //     })
+    //             return element.id === taskId ? false : true
+    //         })
     //     )
     // }
 
 
     return (<>
 
-            {/*Search info about useState(Hook)*/}
-
             <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons}
                 // deleteTask={deleteTask}
             />
-            <ToDoList title={"Preferred to Know"} allTasks={secondTasks} buttons={buttons}/>
-            <ToDoList title={"Optional"} allTasks={thirdTasks} buttons={buttons}/>
-            <ToDoList title={"Without a Title 1"} allTasks={forthTasks} buttons={buttons}/>
-            <ToDoList title={"Without a Title 2"} allTasks={fifthTasks} buttons={testButtons}/>
+            {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
+            {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}
+            {/*<ToDoList title={"Without a Title 1"} allTasks={filteredTasks} buttons={buttons}/>*/}
+            {/*<ToDoList title={"Without a Title 2"} allTasks={filteredTasks} buttons={testButtons}/>*/}
             <Counter></Counter>
         </>
     )

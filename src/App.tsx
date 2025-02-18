@@ -86,7 +86,6 @@ function App() {
 
 
     return (<>
-
             <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons}
                 // deleteTask={deleteTask}
             />

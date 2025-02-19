@@ -19,16 +19,16 @@ function ToDoList(props: any) {
                                 return (
                                     <li key={element.id}>
                                         <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
-                                        <button onClick={() => {props.heraxos(element.id, "Additional message")}}>x</button>
+                                        <button onClick={() => {}}>x</button>
                                     </li>
                                 )
                             })
                             : <li>"There are no tasks"</li>
                     }
 
-                    <button onClick={() => props.clickOnAllButton("Hello I'm all button")}>All</button>
-                    <button onClick={() => props.clickOnActiveButton("Hello I'm active button")}>Active</button>
-                    <button onClick={() => props.clickOnCompletedButton("Hello I'm completed button")}>Completed</button>
+                    <button onClick={() => {props.phone0("I'm button ALL")}}>All</button>
+                    <button onClick={() => {props.phone1("I'm button ACTIVE")}}>Active</button>
+                    <button onClick={() => {props.phone2("I'm button COMPLETED")}}>Completed</button>
 
                 </ul>
                 <div>

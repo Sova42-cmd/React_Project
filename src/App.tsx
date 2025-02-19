@@ -29,11 +29,11 @@ let firstTasks = [
 //     {id: 9, name: "Task6", isDone: true},
 // ]
 //
-// const buttons = [
-//     {id: 1, name: "All"},
-//     {id: 2, name: "Active"},
-//     {id: 3, name: "Completed"}
-// ]
+const buttons = [
+    {id: 1, name: "All"},
+    {id: 2, name: "Active"},
+    {id: 3, name: "Completed"}
+]
 //
 // const testButtons = [
 //     {id: 4, name: "Render New"},
@@ -54,41 +54,25 @@ let firstTasks = [
 function App() {
 
 
+    let unfiltered=firstTasks
+    let unfinished=firstTasks.filter((element)=>{return !element.isDone})
+    let completed=firstTasks.filter((element)=>{return element.isDone})
 
-    function phone(elementId:any, additionalMessage:any) {
-        return  console.log("Hello dad, I'm number"+elementId+additionalMessage)
+    const [taskToChild, setTaskToChild] = useState(unfiltered)
+
+    function mobile0() {
+        setTaskToChild(unfiltered)
     }
-
-    let unfilteredTasks =firstTasks;
-    let completedTasks =firstTasks.filter((element:any) => {return element.isDone});
-    let unfinishedTasks =firstTasks.filter((element:any) => {return !element.isDone});
-
-    const [tasksToChild, setTasksToChild]=useState(unfilteredTasks)
-
-    // let tasksToChild = unfilteredTasks
-
-    console.log(unfilteredTasks);
-    console.log(completedTasks);
-    console.log(unfinishedTasks);
-
-    function clickOnButton(messageFromChild:any) {
-        setTasksToChild((unfilteredTasks))
+    function mobile1() {
+        setTaskToChild(unfinished)
     }
-    function clickOnSecondButton(messageFromSecondChild:any) {
-
-        // tasksToChild=unfinishedTasks
-        setTasksToChild(unfinishedTasks)
-
+    function mobile2() {
+        setTaskToChild(completed)
     }
-    function clickOnThirdButton(messageFromThirdChild:any) {
-        setTasksToChild(completedTasks)
-    }
-
 
     return (<>
-            <ToDoList title={"Necessarily Languages"} allTasks={tasksToChild} buttons={buttons}
-            heraxos={phone} clickOnAllButton={clickOnButton} clickOnActiveButton={clickOnSecondButton}
-                      clickOnCompletedButton={clickOnThirdButton}
+            <ToDoList title={"Necessarily Languages"} allTasks={taskToChild} buttons={buttons}
+                      phone0={mobile0} phone1={mobile1} phone2={mobile2}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}
@@ -99,5 +83,7 @@ function App() {
     )
 }
 
+// Create 3 Callbacks, 3 lets(variable), with 2 filters, Create useState hook
+// Also callback for delete(x) button (only with console.log)
 
 export default App

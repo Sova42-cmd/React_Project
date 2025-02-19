@@ -3,6 +3,7 @@ import './App.css'
 
 function ToDoList(props: any) {
 
+
     return (
         <div className="app">
             <div>
@@ -18,16 +19,16 @@ function ToDoList(props: any) {
                                 return (
                                     <li key={element.id}>
                                         <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
-                                        <button onClick={() => {props.phone(element.id," Second boring text ")}}>x</button>
+                                        <button onClick={() => {props.heraxos(element.id, "Additional message")}}>x</button>
                                     </li>
                                 )
                             })
                             : <li>"There are no tasks"</li>
                     }
 
-                    <button onClick={() => props.allButton("Hello I'm all button")}>All</button>
-                    <button onClick={() => props.allButton("Hello I'm active button")}>Active</button>
-                    <button onClick={() => props.allButton("Hello I'm completed button")}>Completed</button>
+                    <button onClick={() => props.clickOnAllButton("Hello I'm all button")}>All</button>
+                    <button onClick={() => props.clickOnActiveButton("Hello I'm active button")}>Active</button>
+                    <button onClick={() => props.clickOnCompletedButton("Hello I'm completed button")}>Completed</button>
 
                 </ul>
                 <div>

@@ -1,32 +1,26 @@
-import './Counter.css'
+import {useState} from "react";
 
-import { useState } from "react";
 function Counter() {
 
-    // let A = 0;
+    const [tiv, useTiv] = useState(0)
 
-    const [A, setA] = useState(0);
-
-    const increase = () => {
-        setA(A+1);
-    };
-
-    const decrease = () => {
-        setA(A-1);
-    };
-
-    const reset = () => {
-        setA(0);
-    };
+    const plus = () => {
+        useTiv(tiv+1)
+    }
+    const minus = () => {
+        useTiv(tiv-1)
+    }
+    const zero = () => {
+        useTiv(0)
+    }
 
     return (
-        <div className="Counter">
-            <h2>Counter: {A}</h2>
-            <button onClick={increase}>Increase</button>
-            <button onClick={decrease}>Decrease</button>
-            <button onClick={reset}>Reset</button>
+        <div>
+            <h2>3.0Counter {tiv}</h2>
+            <button onClick={plus}>+</button>
+            <button onClick={minus}>-</button>
+            <button onClick={zero}>Reset</button>
         </div>
     )
 }
-
 export default Counter;

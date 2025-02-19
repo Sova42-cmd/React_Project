@@ -2,6 +2,7 @@ import './App.css'
 import ToDoList from "./ToDoList.tsx";
 import Counter from "./Counter.tsx";
 import {createLogger} from "vite";
+import {useState} from "react";
 // import {useState} from "react";
 
 
@@ -9,7 +10,13 @@ let firstTasks = [
     {id: 1, name: "Science", isDone: true,},
     {id: 2, name: "History", isDone: false,},
     {id: 3, name: "Art", isDone: true,},
+    {id: 4, name: "Subject 4", isDone: true,},
+    {id: 5, name: "Subject 5", isDone: false,},
+    {id: 6, name: "Subject 6", isDone: false,},
+    {id: 7, name: "Subject 7", isDone: true,},
+    {id: 8, name: "Religion", isDone: true,},
 ]
+
 
 const secondTasks = [
     {id: 4, name: "Task1", isDone: true},
@@ -74,31 +81,45 @@ const fifthTasks = [
 // console.log(longWords);
 
 
+
 function App() {
 
-    // const [filteredTasks, setFilteredTasks] = useState(firstTasks)
 
-    // const deleteTask = (taskId: number) => {
-    //     setFilteredTasks(filteredTasks.filter((element: any) => {
-    //             return element.id === taskId ? false : true
-    //         })
-    //     )
-    // }
 
-    // function telephone(randomId:any, messageFromChild:any) {
-    //     return console.log("Just a random text"+randomId+messageFromChild)
-    // }
-    //
+    function phone(elementId:any, additionalMessage:any) {
+        return  console.log("Hello dad, I'm number"+elementId+additionalMessage)
+    }
 
-    function mobile(randomId:any, arbitraryId:any) {
-        return console.log("Random boring text "+randomId+arbitraryId)
+    let unfilteredTasks =firstTasks;
+    let completedTasks =firstTasks.filter((element:any) => {return element.isDone});
+    let unfinishedTasks =firstTasks.filter((element:any) => {return !element.isDone});
+
+    const [tasksToChild, setTasksToChild]=useState(unfilteredTasks)
+
+    // let tasksToChild = unfilteredTasks
+
+    console.log(unfilteredTasks);
+    console.log(completedTasks);
+    console.log(unfinishedTasks);
+
+    function clickOnButton(messageFromChild:any) {
+        console.log(messageFromChild);
+    }
+    function clickOnSecondButton(messageFromSecondChild:any) {
+
+        // tasksToChild=unfinishedTasks
+        setTasksToChild(unfinishedTasks)
+
+    }
+    function clickOnThirdButton(messageFromThirdChild:any) {
+        console.log(messageFromThirdChild);
     }
 
 
     return (<>
-
-            <ToDoList title={"Necessarily Languages"} allTasks={firstTasks} buttons={buttons}
-            phone={mobile}
+            <ToDoList title={"Necessarily Languages"} allTasks={tasksToChild} buttons={buttons}
+            heraxos={phone} clickOnAllButton={clickOnButton} clickOnActiveButton={clickOnSecondButton}
+                      clickOnCompletedButton={clickOnThirdButton}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

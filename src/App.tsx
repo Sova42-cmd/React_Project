@@ -1,7 +1,6 @@
 import './App.css'
 import ToDoList from "./ToDoList.tsx";
 import Counter from "./Counter.tsx";
-import {createLogger} from "vite";
 import {useState} from "react";
 // import {useState} from "react";
 
@@ -18,69 +17,39 @@ let firstTasks = [
 ]
 
 
-const secondTasks = [
-    {id: 4, name: "Task1", isDone: true},
-    {id: 5, name: "Task2", isDone: true},
-    {id: 6, name: "Task3", isDone: false},
-]
-
-const thirdTasks = [
-    {id: 7, name: "Task4", isDone: false},
-    {id: 8, name: "Task5", isDone: true},
-    {id: 9, name: "Task6", isDone: true},
-]
-
-const buttons = [
-    {id: 1, name: "All"},
-    {id: 2, name: "Active"},
-    {id: 3, name: "Completed"}
-]
-
-const testButtons = [
-    {id: 4, name: "Render New"},
-]
-
-const forthTasks = [
-    {id: 10, name: "Task 7", isDone: true},
-    {id: 11, name: "Task 8", isDone: true},
-    {id: 12, name: "Task 9", isDone: true},
-]
-
-const fifthTasks = [
-    {id: 13, name: "Task 10", isDone: false},
-    {id: 14, name: "Task 11", isDone: true},
-    {id: 15, name: "Task 12", isDone: false},
-]
-
-// let numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
-// let evenNums = numbers.filter(isEven)
-// let oddNums = numbers.filter(isOdd)
+// const secondTasks = [
+//     {id: 4, name: "Task1", isDone: true},
+//     {id: 5, name: "Task2", isDone: true},
+//     {id: 6, name: "Task3", isDone: false},
+// ]
 //
-// console.log(oddNums)
+// const thirdTasks = [
+//     {id: 7, name: "Task4", isDone: false},
+//     {id: 8, name: "Task5", isDone: true},
+//     {id: 9, name: "Task6", isDone: true},
+// ]
 //
-// function isEven(element:any){
-//     return element % 2 === 0;
-// }
+// const buttons = [
+//     {id: 1, name: "All"},
+//     {id: 2, name: "Active"},
+//     {id: 3, name: "Completed"}
+// ]
 //
-// function isOdd(element:any){
-//     return element % 2 !== 0;
-// }
-
-// const words = ["orange", "apple", "banana", "pomegranate", "kiwi", "cherry", "tomato", "cucumber"];
-// const shortWords = words.filter(filterShortWords)
-// const longWords = words.filter(filterLongWords)
+// const testButtons = [
+//     {id: 4, name: "Render New"},
+// ]
 //
-// function filterShortWords(element: any) {
-//     return element.length <= 6;
-// }
+// const forthTasks = [
+//     {id: 10, name: "Task 7", isDone: true},
+//     {id: 11, name: "Task 8", isDone: true},
+//     {id: 12, name: "Task 9", isDone: true},
+// ]
 //
-// function filterLongWords(element: any) {
-//     return element.length > 6;
-// }
-//
-// console.log(longWords);
-
-
+// const fifthTasks = [
+//     {id: 13, name: "Task 10", isDone: false},
+//     {id: 14, name: "Task 11", isDone: true},
+//     {id: 15, name: "Task 12", isDone: false},
+// ]
 
 function App() {
 
@@ -103,7 +72,7 @@ function App() {
     console.log(unfinishedTasks);
 
     function clickOnButton(messageFromChild:any) {
-        console.log(messageFromChild);
+        setTasksToChild((unfilteredTasks))
     }
     function clickOnSecondButton(messageFromSecondChild:any) {
 
@@ -112,7 +81,7 @@ function App() {
 
     }
     function clickOnThirdButton(messageFromThirdChild:any) {
-        console.log(messageFromThirdChild);
+        setTasksToChild(completedTasks)
     }
 
 

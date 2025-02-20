@@ -53,6 +53,8 @@ let fullTasks:any = firstTasks
 let leftTasks:any = firstTasks.filter((element) => {return !element.isDone})
 let endedTasks:any = firstTasks.filter((element) => {return element.isDone})
 
+let removeTasks:any = firstTasks.filter((element) => {return element.isDone?true:false})
+
 function App() {
 
     const [front, useFront] = useState(0)
@@ -67,10 +69,13 @@ function App() {
         useFront(endedTasks)
     }
 
+    function xButton() {
+        useFront(removeTasks)
+    }
 
     return (<>
             <ToDoList title={"Necessarily Languages"} allTasks={front} buttons={buttons}
-            parent0={child0} parent1={child1} parent2={child2}
+            parent0={child0} parent1={child1} parent2={child2} deleteButton={xButton}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}
@@ -81,7 +86,7 @@ function App() {
     )
 }
 
-// Create 3 Callbacks, 3 lets(variable), with 2 filters, Create useState hook
-// Also callback for delete(x) button (only with console.log)
+// Create 3 Callbacks, 3 lets(variable), with 2 filters, Create useState hook ✓
+// Also callback for delete(x) button (only with console.log) ✓
 
 export default App

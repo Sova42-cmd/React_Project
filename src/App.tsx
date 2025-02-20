@@ -49,27 +49,38 @@ const buttons = [
 //     {id: 15, name: "Task 12", isDone: false},
 // ]
 
+
+
+let allTasks: any = firstTasks
+
+let onlyActiveTasks: any = firstTasks.filter((element: any) => {
+    return !element.isDone
+})
+
+let onlyCompletedTasks: any = firstTasks.filter((element: any) => {
+    return element.isDone
+})
+
 function App() {
 
-    let withoutFilter:any =firstTasks
-    let activeFilter:any =firstTasks.filter((element)=>{return !element.isDone})
-    let completedFilter:any =firstTasks.filter((element)=>{return element.isDone})
+    const [display, setDisplay] = useState(0)
 
-    const [hook, setHook] = useState(0)
+    function onShowAllTasks() {
+        setDisplay(allTasks)
+    }
 
-    function callBack0() {
-        setHook(withoutFilter)
+    function onShowActiveTasks() {
+        setDisplay(onlyActiveTasks)
     }
-    function callBack1() {
-        setHook(activeFilter)
-    }
-    function callBack2() {
-        setHook(completedFilter)
+
+    function onShowCompletedTasks() {
+        setDisplay(onlyCompletedTasks)
     }
 
     return (<>
-            <ToDoList title={"Necessarily Languages"} allTasks={hook} buttons={buttons}
-                      propsName0={callBack0} propsName1={callBack1} propsName2={callBack2}
+            <ToDoList title={"Necessarily Languages"} allTasks={display} buttons={buttons}
+                      showAllTasks={onShowAllTasks} showActiveTasks={onShowActiveTasks}
+                      showCompletedTasks={onShowCompletedTasks}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

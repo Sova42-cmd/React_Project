@@ -2,8 +2,6 @@ import './App.css'
 import ToDoList from "./ToDoList.tsx";
 import Counter from "./Counter.tsx";
 import {useState} from "react";
-// import {useState} from "react";
-
 
 let firstTasks = [
     {id: 1, name: "Science", isDone: true,},
@@ -53,26 +51,25 @@ const buttons = [
 
 function App() {
 
+    let withoutFilter:any =firstTasks
+    let activeFilter:any =firstTasks.filter((element)=>{return !element.isDone})
+    let completedFilter:any =firstTasks.filter((element)=>{return element.isDone})
 
-    let unfiltered=firstTasks
-    let unfinished=firstTasks.filter((element)=>{return !element.isDone})
-    let completed=firstTasks.filter((element)=>{return element.isDone})
+    const [hook, setHook] = useState(0)
 
-    const [taskToChild, setTaskToChild] = useState(unfiltered)
-
-    function mobile0() {
-        setTaskToChild(unfiltered)
+    function callBack0() {
+        setHook(withoutFilter)
     }
-    function mobile1() {
-        setTaskToChild(unfinished)
+    function callBack1() {
+        setHook(activeFilter)
     }
-    function mobile2() {
-        setTaskToChild(completed)
+    function callBack2() {
+        setHook(completedFilter)
     }
 
     return (<>
-            <ToDoList title={"Necessarily Languages"} allTasks={taskToChild} buttons={buttons}
-                      phone0={mobile0} phone1={mobile1} phone2={mobile2}
+            <ToDoList title={"Necessarily Languages"} allTasks={hook} buttons={buttons}
+                      propsName0={callBack0} propsName1={callBack1} propsName2={callBack2}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

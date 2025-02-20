@@ -49,38 +49,28 @@ const buttons = [
 //     {id: 15, name: "Task 12", isDone: false},
 // ]
 
-
-
-let allTasks: any = firstTasks
-
-let onlyActiveTasks: any = firstTasks.filter((element: any) => {
-    return !element.isDone
-})
-
-let onlyCompletedTasks: any = firstTasks.filter((element: any) => {
-    return element.isDone
-})
+let fullTasks:any = firstTasks
+let leftTasks:any = firstTasks.filter((element) => {return !element.isDone})
+let endedTasks:any = firstTasks.filter((element) => {return element.isDone})
 
 function App() {
 
-    const [display, setDisplay] = useState(0)
+    const [front, useFront] = useState(0)
 
-    function onShowAllTasks() {
-        setDisplay(allTasks)
+    function child0() {
+        useFront(fullTasks)
+    }
+    function child1() {
+        useFront(leftTasks)
+    }
+    function child2() {
+        useFront(endedTasks)
     }
 
-    function onShowActiveTasks() {
-        setDisplay(onlyActiveTasks)
-    }
-
-    function onShowCompletedTasks() {
-        setDisplay(onlyCompletedTasks)
-    }
 
     return (<>
-            <ToDoList title={"Necessarily Languages"} allTasks={display} buttons={buttons}
-                      showAllTasks={onShowAllTasks} showActiveTasks={onShowActiveTasks}
-                      showCompletedTasks={onShowCompletedTasks}
+            <ToDoList title={"Necessarily Languages"} allTasks={front} buttons={buttons}
+            parent0={child0} parent1={child1} parent2={child2}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

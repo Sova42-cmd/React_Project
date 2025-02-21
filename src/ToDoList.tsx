@@ -45,4 +45,4 @@ function ToDoList(props: any) {
     )
 }
 
-export default ToDoList;
+export default ToDoList

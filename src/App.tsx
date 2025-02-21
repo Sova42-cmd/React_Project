@@ -53,7 +53,7 @@ let fullTasks:any = firstTasks
 let leftTasks:any = firstTasks.filter((element:any) => {return !element.isDone})
 let endedTasks:any = firstTasks.filter((element:any) => {return element.isDone})
 
-let removeTasks0:any = firstTasks.filter((element:any) => {return element.id !==1})
+let removeTasks0:any = firstTasks.filter((element:any) => {return element.id===0})
 // let removeTasks1:any = firstTasks.filter((element:any) => {return element.id !==2})
 // let removeTasks2:any = firstTasks.filter((element:any) => {return element.id !==3})
 // let removeTasks3:any = firstTasks.filter((element:any) => {return element.id !==4})

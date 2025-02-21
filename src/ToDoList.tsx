@@ -23,17 +23,16 @@ function ToDoList(props: any) {
                                 return (
                                     <li key={element.id}>
                                         <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
-                                        <button onClick={handleClick}>x</button>
                                     </li>
                                 )
                             })
                             : <li>"There are no tasks"</li>
                     }
 
-
                     <button onClick={() => {props.parent0("I'm all tasks button")}}>All</button>
                     <button onClick={() => {props.parent1("I'm active tasks")}}>Active</button>
                     <button onClick={() => {props.parent2("Random text, not relevant")}}>Completed</button>
+                    <button onClick={handleClick}>x</button>
 
                 </ul>
                 <div>

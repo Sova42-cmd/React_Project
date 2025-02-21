@@ -1,6 +1,6 @@
 .app {
   padding: 30px;
-  display: inline-block;
+  display: flex;
   background-color: #6d6470;
   margin: 20px;
   border: 5px solid black;

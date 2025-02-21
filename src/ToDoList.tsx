@@ -1,8 +1,12 @@
 import './App.css'
 
-
 function ToDoList(props: any) {
 
+    const handleClick = ():void => {
+        if (props.deleteButton0) props.deleteButton0();
+        // if (props.deleteButton1) props.deleteButton1();
+        // if (props.deleteButton2) props.deleteButton2();
+    }
 
     return (
         <div className="app">
@@ -19,12 +23,13 @@ function ToDoList(props: any) {
                                 return (
                                     <li key={element.id}>
                                         <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
-                                        <button onClick={() => {props.deleteButton()}}>x</button>
+                                        <button onClick={handleClick}>x</button>
                                     </li>
                                 )
                             })
                             : <li>"There are no tasks"</li>
                     }
+
 
                     <button onClick={() => {props.parent0("I'm all tasks button")}}>All</button>
                     <button onClick={() => {props.parent1("I'm active tasks")}}>Active</button>

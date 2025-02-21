@@ -50,10 +50,17 @@ const buttons = [
 // ]
 
 let fullTasks:any = firstTasks
-let leftTasks:any = firstTasks.filter((element) => {return !element.isDone})
-let endedTasks:any = firstTasks.filter((element) => {return element.isDone})
+let leftTasks:any = firstTasks.filter((element:any) => {return !element.isDone})
+let endedTasks:any = firstTasks.filter((element:any) => {return element.isDone})
 
-let removeTasks:any = firstTasks.filter((element) => {return element.isDone?true:false})
+let removeTasks0:any = firstTasks.filter((element:any) => {return element.id !==1})
+// let removeTasks1:any = firstTasks.filter((element:any) => {return element.id !==2})
+// let removeTasks2:any = firstTasks.filter((element:any) => {return element.id !==3})
+// let removeTasks3:any = firstTasks.filter((element:any) => {return element.id !==4})
+// let removeTasks4:any = firstTasks.filter((element:any) => {return element.id !==5})
+// let removeTasks5:any = firstTasks.filter((element:any) => {return element.id !==6})
+// let removeTasks6:any = firstTasks.filter((element:any) => {return element.id !==7})
+// let removeTasks7:any = firstTasks.filter((element:any) => {return element.id !==8})
 
 function App() {
 
@@ -69,13 +76,42 @@ function App() {
         useFront(endedTasks)
     }
 
-    function xButton() {
-        useFront(removeTasks)
+    function xButton0() {
+        useFront(removeTasks0)
     }
+    // function xButton1() {
+    //     useFront(removeTasks1)
+    // }
+    // function xButton2() {
+    //     useFront(removeTasks2)
+    // }
+    // function xButton3() {
+    //     useFront(removeTasks3)
+    // }
+    // function xButton4() {
+    //     useFront(removeTasks4)
+    // }
+    // function xButton5() {
+    //     useFront(removeTasks5)
+    // }
+    // function xButton6() {
+    //     useFront(removeTasks6)
+    // }
+    // function xButton7() {
+    //     useFront(removeTasks7)
+    // }
 
     return (<>
             <ToDoList title={"Necessarily Languages"} allTasks={front} buttons={buttons}
-            parent0={child0} parent1={child1} parent2={child2} deleteButton={xButton}
+            parent0={child0} parent1={child1} parent2={child2}
+                      deleteButton0={xButton0}
+                      // deleteButton1={xButton1}
+                      // deleteButton2={xButton2}
+                      // deleteButton3={xButton3}
+                      // deleteButton4={xButton4}
+                      // deleteButton5={xButton5}
+                      // deleteButton6={xButton6}
+                      // deleteButton7={xButton7}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

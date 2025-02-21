@@ -32,6 +32,7 @@ const buttons:any = [
 //     {id: 9, name: "Task6", isDone: true},
 // ]
 //
+
 //
 // const testButtons = [
 //     {id: 4, name: "Render New"},
@@ -57,13 +58,13 @@ const [visual, setVisual] = useState(0)
 
 function App() {
 
-    const functionName0= () => {
+    function functionName0() {
         setVisual(noFilter)
     }
-    const functionName1 = () => {
+    function functionName1() {
         setVisual(filterActive)
     }
-    const functionName2 = () => {
+    function functionName2() {
         setVisual(filterCompleted)
     }
 

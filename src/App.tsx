@@ -3,7 +3,7 @@ import ToDoList from "./ToDoList.tsx";
 import Counter from "./Counter.tsx";
 import {useState} from "react";
 
-let firstTasks = [
+let firstTasks:any = [
     {id: 1, name: "Science", isDone: true,},
     {id: 2, name: "History", isDone: false,},
     {id: 3, name: "Art", isDone: true,},
@@ -14,6 +14,11 @@ let firstTasks = [
     {id: 8, name: "Religion", isDone: true,},
 ]
 
+const buttons:any = [
+    {id: 1, name: "All"},
+    {id: 2, name: "Active"},
+    {id: 3, name: "Completed"}
+]
 
 // const secondTasks = [
 //     {id: 4, name: "Task1", isDone: true},
@@ -27,11 +32,6 @@ let firstTasks = [
 //     {id: 9, name: "Task6", isDone: true},
 // ]
 //
-const buttons = [
-    {id: 1, name: "All"},
-    {id: 2, name: "Active"},
-    {id: 3, name: "Completed"}
-]
 //
 // const testButtons = [
 //     {id: 4, name: "Render New"},
@@ -49,69 +49,27 @@ const buttons = [
 //     {id: 15, name: "Task 12", isDone: false},
 // ]
 
-let fullTasks:any = firstTasks
-let leftTasks:any = firstTasks.filter((element:any) => {return !element.isDone})
-let endedTasks:any = firstTasks.filter((element:any) => {return element.isDone})
+let noFilter:any =firstTasks
+let filterActive:any =firstTasks.filter((element:any) => {return !element.isDone})
+let filterCompleted:any =firstTasks.filter((element:any) => {return element.isDone})
 
-let removeTasks0:any = firstTasks.filter((element:any) => {return element.id===0})
-// let removeTasks1:any = firstTasks.filter((element:any) => {return element.id !==2})
-// let removeTasks2:any = firstTasks.filter((element:any) => {return element.id !==3})
-// let removeTasks3:any = firstTasks.filter((element:any) => {return element.id !==4})
-// let removeTasks4:any = firstTasks.filter((element:any) => {return element.id !==5})
-// let removeTasks5:any = firstTasks.filter((element:any) => {return element.id !==6})
-// let removeTasks6:any = firstTasks.filter((element:any) => {return element.id !==7})
-// let removeTasks7:any = firstTasks.filter((element:any) => {return element.id !==8})
+const [visual, setVisual] = useState(0)
 
 function App() {
 
-    const [front, useFront] = useState(0)
-
-    function child0() {
-        useFront(fullTasks)
+    const functionName0= () => {
+        setVisual(noFilter)
     }
-    function child1() {
-        useFront(leftTasks)
+    const functionName1 = () => {
+        setVisual(filterActive)
     }
-    function child2() {
-        useFront(endedTasks)
+    const functionName2 = () => {
+        setVisual(filterCompleted)
     }
-
-    function xButton0() {
-        useFront(removeTasks0)
-    }
-    // function xButton1() {
-    //     useFront(removeTasks1)
-    // }
-    // function xButton2() {
-    //     useFront(removeTasks2)
-    // }
-    // function xButton3() {
-    //     useFront(removeTasks3)
-    // }
-    // function xButton4() {
-    //     useFront(removeTasks4)
-    // }
-    // function xButton5() {
-    //     useFront(removeTasks5)
-    // }
-    // function xButton6() {
-    //     useFront(removeTasks6)
-    // }
-    // function xButton7() {
-    //     useFront(removeTasks7)
-    // }
 
     return (<>
-            <ToDoList title={"Necessarily Languages"} allTasks={front} buttons={buttons}
-            parent0={child0} parent1={child1} parent2={child2}
-                      deleteButton0={xButton0}
-                      // deleteButton1={xButton1}
-                      // deleteButton2={xButton2}
-                      // deleteButton3={xButton3}
-                      // deleteButton4={xButton4}
-                      // deleteButton5={xButton5}
-                      // deleteButton6={xButton6}
-                      // deleteButton7={xButton7}
+            <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
+                      propsName0={functionName0} propsName1={functionName1} propsName2={functionName2}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

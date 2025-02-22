@@ -32,8 +32,6 @@ const buttons:any = [
 //     {id: 9, name: "Task6", isDone: true},
 // ]
 //
-
-//
 // const testButtons = [
 //     {id: 4, name: "Render New"},
 // ]
@@ -52,25 +50,28 @@ const buttons:any = [
 
 function App() {
 
-    let noFilter:any =firstTasks
-    let filterActive:any =firstTasks.filter((element:any) => {return !element.isDone})
-    let filterCompleted:any =firstTasks.filter((element:any) => {return element.isDone})
+    let activeTasks =firstTasks.filter((element:any)=>{return !element.isDone})
+    let completedTasks:any = firstTasks.filter((element:any)=>{return element.isDone})
 
-    const [visual, setVisual] = useState(0)
+    let visual=firstTasks
 
-    function functionName0() {
-        setVisual(noFilter)
+    const [chosenButton, setChooseButton] = useState<"All"|"Active"|"Completed">("All")
+
+    function phone(randomText:any) {
+        setChooseButton(randomText)
     }
-    function functionName1() {
-        setVisual(filterActive)
-    }
-    function functionName2() {
-        setVisual(filterCompleted)
+
+    if(chosenButton==="All") {
+        visual=firstTasks
+    } else if (chosenButton==="Active") {
+        visual=activeTasks
+    } else if (chosenButton==="Completed") {
+        visual=completedTasks
     }
 
     return (<>
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
-                      propsName0={functionName0} propsName1={functionName1} propsName2={functionName2}
+                      child={phone}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

@@ -31,9 +31,9 @@ function ToDoList(props: any) {
                             : <li>"There are no tasks"</li>
                     }
 
-                    <button onClick={() => {props.propsName0("I'm all tasks button")}}>All</button>
-                    <button onClick={() => {props.propsName1("I'm active tasks")}}>Active</button>
-                    <button onClick={() => {props.propsName2("Random text, not relevant")}}>Completed</button>
+                    <button onClick={() => {props.child("All")}}>All</button>
+                    <button onClick={() => {props.child("Active")}}>Active</button>
+                    <button onClick={() => {props.child("Completed")}}>Completed</button>
 
                 </ul>
                 <div>

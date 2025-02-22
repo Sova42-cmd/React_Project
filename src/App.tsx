@@ -50,28 +50,41 @@ const buttons:any = [
 
 function App() {
 
-    let activeTasks =firstTasks.filter((element:any)=>{return !element.isDone})
-    let completedTasks:any = firstTasks.filter((element:any)=>{return element.isDone})
+    const[firstTasksWithoutDeleted, setFirstTasksWithoutDeleted] = useState(firstTasks)
 
-    let visual=firstTasks
+    let onlyActiveTasks:any =firstTasksWithoutDeleted.filter((element:any)=>{return !element.isDone})
+    let onlyCompletedTasks:any =firstTasksWithoutDeleted.filter((element:any)=>{return element.isDone})
 
-    const [chosenButton, setChooseButton] = useState<"All"|"Active"|"Completed">("All")
+    let visual:any=firstTasksWithoutDeleted
 
-    function phone(randomText:any) {
-        setChooseButton(randomText)
+    const [chosenButton, setChosenButton] = useState<"All"|"Active"|"Completed">("All")
+
+    if (chosenButton === "All") {
+        visual=firstTasks
+    } else if (chosenButton === "Active") {
+        visual=onlyActiveTasks
+    } else if (chosenButton === "Completed") {
+        visual=onlyCompletedTasks
     }
 
-    if(chosenButton==="All") {
-        visual=firstTasks
-    } else if (chosenButton==="Active") {
-        visual=activeTasks
-    } else if (chosenButton==="Completed") {
-        visual=completedTasks
+    function changeSelectedButton(relevantText:any){
+        setChosenButton(relevantText)
+    }
+
+    function deleteTask(taskId:any){
+
+        const newFirstTasksWithoutDeleted=firstTasksWithoutDeleted.filter((element:any)=>{return element.id !== taskId})
+        console.log(newFirstTasksWithoutDeleted)
+
+        setFirstTasksWithoutDeleted(newFirstTasksWithoutDeleted)
+
+        setChosenButton('All')
     }
 
     return (<>
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
-                      child={phone}
+                      chooseSelecetedButton={changeSelectedButton}
+                      deleteMe={deleteTask}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

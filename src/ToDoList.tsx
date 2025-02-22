@@ -23,7 +23,7 @@ function ToDoList(props: any) {
                                 return (
                                     <li key={element.id}>
                                         <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
-                                        <button onClick={()=>{}}>x</button>
+                                        <button onClick={()=>{props.deleteMe(element.id)}}>x</button>
 
                                     </li>
                                 )
@@ -31,9 +31,9 @@ function ToDoList(props: any) {
                             : <li>"There are no tasks"</li>
                     }
 
-                    <button onClick={() => {props.child("All")}}>All</button>
-                    <button onClick={() => {props.child("Active")}}>Active</button>
-                    <button onClick={() => {props.child("Completed")}}>Completed</button>
+                    <button onClick={() => {props.chooseSelecetedButton("All")}}>All</button>
+                    <button onClick={() => {props.chooseSelecetedButton("Active")}}>Active</button>
+                    <button onClick={() => {props.chooseSelecetedButton("Completed")}}>Completed</button>
 
                 </ul>
                 <div>

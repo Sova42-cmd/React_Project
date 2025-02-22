@@ -52,19 +52,16 @@ function App() {
 
     const[firstTasksWithoutDeleted, setFirstTasksWithoutDeleted] = useState(firstTasks)
 
-    let onlyActiveTasks:any =firstTasksWithoutDeleted.filter((element:any)=>{return !element.isDone})
-    let onlyCompletedTasks:any =firstTasksWithoutDeleted.filter((element:any)=>{return element.isDone})
-
-    let visual:any=firstTasksWithoutDeleted
-
     const [chosenButton, setChosenButton] = useState<"All"|"Active"|"Completed">("All")
 
+    let visual:any
+
     if (chosenButton === "All") {
-        visual=firstTasks
+        visual=firstTasksWithoutDeleted
     } else if (chosenButton === "Active") {
-        visual=onlyActiveTasks
+        visual=firstTasksWithoutDeleted.filter((element:any):any=>{return !element.isDone})
     } else if (chosenButton === "Completed") {
-        visual=onlyCompletedTasks
+        visual=firstTasksWithoutDeleted.filter((element:any):any=>{return element.isDone})
     }
 
     function changeSelectedButton(relevantText:any){
@@ -72,13 +69,7 @@ function App() {
     }
 
     function deleteTask(taskId:any){
-
-        const newFirstTasksWithoutDeleted=firstTasksWithoutDeleted.filter((element:any)=>{return element.id !== taskId})
-        console.log(newFirstTasksWithoutDeleted)
-
-        setFirstTasksWithoutDeleted(newFirstTasksWithoutDeleted)
-
-        setChosenButton('All')
+        setFirstTasksWithoutDeleted(firstTasksWithoutDeleted.filter((element:any)=>{return element.id !== taskId}))
     }
 
     return (<>

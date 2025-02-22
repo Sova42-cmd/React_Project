@@ -50,13 +50,13 @@ const buttons:any = [
 //     {id: 15, name: "Task 12", isDone: false},
 // ]
 
-let noFilter:any =firstTasks
-let filterActive:any =firstTasks.filter((element:any) => {return !element.isDone})
-let filterCompleted:any =firstTasks.filter((element:any) => {return element.isDone})
-
-const [visual, setVisual] = useState(0)
-
 function App() {
+
+    let noFilter:any =firstTasks
+    let filterActive:any =firstTasks.filter((element:any) => {return !element.isDone})
+    let filterCompleted:any =firstTasks.filter((element:any) => {return element.isDone})
+
+    const [visual, setVisual] = useState(0)
 
     function functionName0() {
         setVisual(noFilter)

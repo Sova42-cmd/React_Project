@@ -14,7 +14,6 @@ function Counter() {
     }
     const zero = () => {
         useTiv(0)
-
     }
 
     return (

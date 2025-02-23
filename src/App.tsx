@@ -9,9 +9,9 @@ import {useState} from "react";
 
 let firstTasks:any = [
     {id: 1, name: "Science", isDone: true,},
-    {id: 2, name: "History", isDone: false,},
-    {id: 3, name: "Art", isDone: true,},
-    {id: 4, name: "Subject 4", isDone: true,},
+    {id: 1, name: "History", isDone: false,},
+    {id: 1, name: "Art", isDone: true,},
+    {id: 1, name: "Subject 4", isDone: true,},
     {id: 5, name: "Subject 5", isDone: false,},
     {id: 6, name: "Subject 6", isDone: false,},
     {id: 7, name: "Subject 7", isDone: true,},
@@ -54,17 +54,28 @@ const buttons:any = [
 
 function App() {
 
-    let visual:any =firstTasks
+    let visual:any
 
-    const [possibleButtons, setpossibleButtons] =useState<"All"|"Active"|"Completed">("All")
+    const [firstTasksWithoutDeletedTasks, setFirstTasksWithoutDeletedTasks] =useState(firstTasks)
 
-    // state, (set)functionChangingState(this function is newState as a parameter), parameter is new State. useState is Hook.
-    // <"All"|"Active"|"Completed"> <-These are possible values or types of state
-    // and () here's the initial state.
-
-    function buttonSelection(message:"All"|"Active"|"Completed") {
-        setpossibleButtons(message)
+    function deletedTasks(messageID:number) {
+        setFirstTasksWithoutDeletedTasks(firstTasksWithoutDeletedTasks.filter((element:any)=>{return element.id !== messageID}))
     }
+
+    const [selected, setSelected] = useState<"All"|"Active"|"Completed">("All")
+
+    function selectedButton(message:"All"|"Active"|"Completed") {
+        setSelected(message)
+    }
+
+    if (selected === "All") {
+        visual=firstTasksWithoutDeletedTasks
+    } else if (selected === "Active") {
+        visual=firstTasksWithoutDeletedTasks.filter((element:any)=>{return !element.isDone})
+    } else if (selected === "Completed") {
+        visual=firstTasksWithoutDeletedTasks.filter((element:any)=>{return element.isDone})
+    }
+
 
     // const [buttonChoose, setButtonChoose] = useState<"All"|"Active"|"Completed">("All")
     //
@@ -111,8 +122,8 @@ function App() {
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
                       // chooseSelectedButton={changeSelectedButton}
                       // deleteMe={deleteTask}
-                      // givePhone={phone}
-                        nameForButtonSelection={buttonSelection}
+                      selectedButtonFilter={selectedButton}
+                      deletedTasksFilter={deletedTasks}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

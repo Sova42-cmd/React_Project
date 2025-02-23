@@ -8,7 +8,7 @@ import {v1} from "uuid";
 // <"All"|"Active"|"Completed"> <-These are possible values or types of state
 // and () here's the initial state.
 
-let firstTasks:any = [
+let firstTasks: any = [
     {id: v1(), name: "Science", isDone: true,},
     {id: v1(), name: "History", isDone: false,},
     {id: v1(), name: "Art", isDone: true,},
@@ -19,7 +19,7 @@ let firstTasks:any = [
     {id: v1(), name: "Religion", isDone: true,},
 ]
 
-const buttons:any = [
+const buttons: any = [
     {id: 1, name: "All"},
     {id: 2, name: "Active"},
     {id: 3, name: "Completed"}
@@ -55,26 +55,40 @@ const buttons:any = [
 
 function App() {
 
-    let visual:any
+    let visual: any
 
-    const [firstTasksWithoutDeletedTasks, setFirstTasksWithoutDeletedTasks] =useState(firstTasks)
+    const [firstTasksWithoutDeletedTasks, setFirstTasksWithoutDeletedTasks] = useState(firstTasks)
 
-    function deletedTasks(messageID:string) {
-        setFirstTasksWithoutDeletedTasks(firstTasksWithoutDeletedTasks.filter((element:any)=>{return element.id !== messageID}))
+    function deletedTasks(messageID: string) {
+        setFirstTasksWithoutDeletedTasks(firstTasksWithoutDeletedTasks.filter((element: any) => {
+            return element.id !== messageID
+        }))
     }
 
-    const [selected, setSelected] = useState<"All"|"Active"|"Completed">("All")
+    function addButtonClick(message: string) {
+        setFirstTasksWithoutDeletedTasks(
+            [
+                {id: v1(), name: message, isDone: false,}, ...firstTasksWithoutDeletedTasks
+            ]
+        )
+    }
 
-    function selectedButton(message:"All"|"Active"|"Completed") {
+    const [selected, setSelected] = useState<"All" | "Active" | "Completed">("All")
+
+    function selectedButton(message: "All" | "Active" | "Completed") {
         setSelected(message)
     }
 
     if (selected === "All") {
-        visual=firstTasksWithoutDeletedTasks
+        visual = firstTasksWithoutDeletedTasks
     } else if (selected === "Active") {
-        visual=firstTasksWithoutDeletedTasks.filter((element:any)=>{return !element.isDone})
+        visual = firstTasksWithoutDeletedTasks.filter((element: any) => {
+            return !element.isDone
+        })
     } else if (selected === "Completed") {
-        visual=firstTasksWithoutDeletedTasks.filter((element:any)=>{return element.isDone})
+        visual = firstTasksWithoutDeletedTasks.filter((element: any) => {
+            return element.isDone
+        })
     }
 
 
@@ -121,10 +135,11 @@ function App() {
 
     return (<>
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
-                      // chooseSelectedButton={changeSelectedButton}
-                      // deleteMe={deleteTask}
+                // chooseSelectedButton={changeSelectedButton}
+                // deleteMe={deleteTask}
                       selectedButtonFilter={selectedButton}
                       deletedTasksFilter={deletedTasks}
+                      addButtonClickFilter={addButtonClick}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

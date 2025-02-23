@@ -11,7 +11,7 @@ function ToDoList(props: any) {
     //     // if (props.deleteButton1) props.deleteButton1();
     //     // if (props.deleteButton2) props.deleteButton2();
     // }
-    console.log(inputValue)
+
     return (
         <div className="app">
             <div>
@@ -20,8 +20,20 @@ function ToDoList(props: any) {
                     {/*<input value={imputValue} onChange={(event)=>{setImputValue(event.currentTarget.value)}} />*/}
                     <input
                         value={inputValue}
-                        onChange={(event)=>{setInputValue(event.currentTarget.value)}}/>
-                    <button>+</button>
+                        onChange={(event) => {
+                            setInputValue(event.currentTarget.value)
+                        }}
+                        onKeyDown={(event) => {
+                            if(event.key==="Enter") {
+                            props.addButtonClickFilter(inputValue)
+                        } }}
+                    />
+                    <button onClick={() => {
+                        props.addButtonClickFilter(inputValue)
+                    }}
+
+
+                        >+</button>
                 </div>
                 <ul>
                     {
@@ -30,7 +42,10 @@ function ToDoList(props: any) {
                                 return (
                                     <li key={element.id}>
                                         <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
-                                        <button onClick={()=>{props.deletedTasksFilter(element.id)}}>x</button>
+                                        <button onClick={() => {
+                                            props.deletedTasksFilter(element.id)
+                                        }}>x
+                                        </button>
 
                                     </li>
                                 )
@@ -38,9 +53,18 @@ function ToDoList(props: any) {
                             : <li>"There are no tasks"</li>
                     }
 
-                    <button onClick={() => {props.selectedButtonFilter("All")}}>All</button>
-                    <button onClick={() => {props.selectedButtonFilter("Active")}}>Active</button>
-                    <button onClick={() => {props.selectedButtonFilter("Completed")}}>Completed</button>
+                    <button onClick={() => {
+                        props.selectedButtonFilter("All")
+                    }}>All
+                    </button>
+                    <button onClick={() => {
+                        props.selectedButtonFilter("Active")
+                    }}>Active
+                    </button>
+                    <button onClick={() => {
+                        props.selectedButtonFilter("Completed")
+                    }}>Completed
+                    </button>
 
                 </ul>
                 <div>

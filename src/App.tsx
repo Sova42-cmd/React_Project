@@ -3,6 +3,10 @@ import ToDoList from "./ToDoList.tsx";
 import Counter from "./Counter.tsx";
 import {useState} from "react";
 
+// state, (set)functionChangingState(this function is newState as a parameter), parameter is new State. useState is Hook.
+// <"All"|"Active"|"Completed"> <-These are possible values or types of state
+// and () here's the initial state.
+
 let firstTasks:any = [
     {id: 1, name: "Science", isDone: true,},
     {id: 2, name: "History", isDone: false,},
@@ -50,25 +54,35 @@ const buttons:any = [
 
 function App() {
 
-    let visual:any
+    let visual:any =firstTasks
 
-    const [buttonChoose, setButtonChoose] = useState<"All"|"Active"|"Completed">("All")
+    const [possibleButtons, setpossibleButtons] =useState<"All"|"Active"|"Completed">("All")
 
-    const [currentState, setCurrentState] = useState(firstTasks)
+    // state, (set)functionChangingState(this function is newState as a parameter), parameter is new State. useState is Hook.
+    // <"All"|"Active"|"Completed"> <-These are possible values or types of state
+    // and () here's the initial state.
 
-    if(buttonChoose==="All") {
-        visual=currentState
-    } else if(buttonChoose==="Active") {
-        visual=currentState.filter((element:any)=>{return !element.isDone})
-    } else if(buttonChoose==="Completed") {
-        visual=currentState.filter((element:any)=>{return element.isDone})
+    function buttonSelection(message:"All"|"Active"|"Completed") {
+        setpossibleButtons(message)
     }
-    function changeSelectedButton(newButton:any){
-        setButtonChoose(newButton)
-    }
-    function deleteTask(taskId:any){
-        setCurrentState(currentState.filter((element:any)=>{return element.id !== taskId}))
-        }
+
+    // const [buttonChoose, setButtonChoose] = useState<"All"|"Active"|"Completed">("All")
+    //
+    // const [currentState, setCurrentState] = useState(firstTasks)
+    //
+    // if(buttonChoose==="All") {
+    //     visual=currentState
+    // } else if(buttonChoose==="Active") {
+    //     visual=currentState.filter((element:any)=>{return !element.isDone})
+    // } else if(buttonChoose==="Completed") {
+    //     visual=currentState.filter((element:any)=>{return element.isDone})
+    // }
+    // function changeSelectedButton(newButton:any){
+    //     setButtonChoose(newButton)
+    // }
+    // function deleteTask(taskId:any){
+    //     setCurrentState(currentState.filter((element:any)=>{return element.id !== taskId}))
+    //     }
     // test
 
     // const[firstTasksWithoutDeleted, setFirstTasksWithoutDeleted] = useState(firstTasks)
@@ -95,8 +109,10 @@ function App() {
 
     return (<>
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
-                      chooseSelecetedButton={changeSelectedButton}
-                      deleteMe={deleteTask}
+                      // chooseSelectedButton={changeSelectedButton}
+                      // deleteMe={deleteTask}
+                      // givePhone={phone}
+                        nameForButtonSelection={buttonSelection}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

@@ -69,6 +69,7 @@ function App() {
     function deleteTask(taskId:any){
         setCurrentState(currentState.filter((element:any)=>{return element.id !== taskId}))
         }
+    // test
 
     // const[firstTasksWithoutDeleted, setFirstTasksWithoutDeleted] = useState(firstTasks)
     //

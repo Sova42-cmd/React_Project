@@ -2,20 +2,21 @@ import './App.css'
 import ToDoList from "./ToDoList.tsx";
 import Counter from "./Counter.tsx";
 import {useState} from "react";
+import {v1} from "uuid";
 
 // state, (set)functionChangingState(this function is newState as a parameter), parameter is new State. useState is Hook.
 // <"All"|"Active"|"Completed"> <-These are possible values or types of state
 // and () here's the initial state.
 
 let firstTasks:any = [
-    {id: 1, name: "Science", isDone: true,},
-    {id: 1, name: "History", isDone: false,},
-    {id: 1, name: "Art", isDone: true,},
-    {id: 1, name: "Subject 4", isDone: true,},
-    {id: 5, name: "Subject 5", isDone: false,},
-    {id: 6, name: "Subject 6", isDone: false,},
-    {id: 7, name: "Subject 7", isDone: true,},
-    {id: 8, name: "Religion", isDone: true,},
+    {id: v1(), name: "Science", isDone: true,},
+    {id: v1(), name: "History", isDone: false,},
+    {id: v1(), name: "Art", isDone: true,},
+    {id: v1(), name: "Subject 4", isDone: true,},
+    {id: v1(), name: "Subject 5", isDone: false,},
+    {id: v1(), name: "Subject 6", isDone: false,},
+    {id: v1(), name: "Subject 7", isDone: true,},
+    {id: v1(), name: "Religion", isDone: true,},
 ]
 
 const buttons:any = [
@@ -58,7 +59,7 @@ function App() {
 
     const [firstTasksWithoutDeletedTasks, setFirstTasksWithoutDeletedTasks] =useState(firstTasks)
 
-    function deletedTasks(messageID:number) {
+    function deletedTasks(messageID:string) {
         setFirstTasksWithoutDeletedTasks(firstTasksWithoutDeletedTasks.filter((element:any)=>{return element.id !== messageID}))
     }
 

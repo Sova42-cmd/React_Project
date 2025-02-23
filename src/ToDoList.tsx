@@ -1,19 +1,26 @@
 import './App.css'
+import {useState} from "react";
 
 function ToDoList(props: any) {
+
+
+    const [inputValue, setInputValue] = useState("")
 
     // const handleClick = ():void => {
     //     if (props.deleteButton0) props.deleteButton0();
     //     // if (props.deleteButton1) props.deleteButton1();
     //     // if (props.deleteButton2) props.deleteButton2();
     // }
-
+    console.log(inputValue)
     return (
         <div className="app">
             <div>
                 <h3>{props.title}</h3>
                 <div>
-                    <input/>
+                    {/*<input value={imputValue} onChange={(event)=>{setImputValue(event.currentTarget.value)}} />*/}
+                    <input
+                        value={inputValue}
+                        onChange={(event)=>{setInputValue(event.currentTarget.value)}}/>
                     <button>+</button>
                 </div>
                 <ul>

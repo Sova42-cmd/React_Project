@@ -50,27 +50,47 @@ const buttons:any = [
 
 function App() {
 
-    const[firstTasksWithoutDeleted, setFirstTasksWithoutDeleted] = useState(firstTasks)
-
-    const [chosenButton, setChosenButton] = useState<"All"|"Active"|"Completed">("All")
-
     let visual:any
 
-    if (chosenButton === "All") {
-        visual=firstTasksWithoutDeleted
-    } else if (chosenButton === "Active") {
-        visual=firstTasksWithoutDeleted.filter((element:any):any=>{return !element.isDone})
-    } else if (chosenButton === "Completed") {
-        visual=firstTasksWithoutDeleted.filter((element:any):any=>{return element.isDone})
-    }
+    const [buttonChoose, setButtonChoose] = useState<"All"|"Active"|"Completed">("All")
 
-    function changeSelectedButton(relevantText:any){
-        setChosenButton(relevantText)
-    }
+    const [currentState, setCurrentState] = useState(firstTasks)
 
+    if(buttonChoose==="All") {
+        visual=currentState
+    } else if(buttonChoose==="Active") {
+        visual=currentState.filter((element:any)=>{return !element.isDone})
+    } else if(buttonChoose==="Completed") {
+        visual=currentState.filter((element:any)=>{return element.isDone})
+    }
+    function changeSelectedButton(newButton:any){
+        setButtonChoose(newButton)
+    }
     function deleteTask(taskId:any){
-        setFirstTasksWithoutDeleted(firstTasksWithoutDeleted.filter((element:any)=>{return element.id !== taskId}))
-    }
+        setCurrentState(currentState.filter((element:any)=>{return element.id !== taskId}))
+        }
+
+    // const[firstTasksWithoutDeleted, setFirstTasksWithoutDeleted] = useState(firstTasks)
+    //
+    // const [chosenButton, setChosenButton] = useState<"All"|"Active"|"Completed">("All")
+    //
+    // let visual:any
+    //
+    // if (chosenButton === "All") {
+    //     visual=firstTasksWithoutDeleted
+    // } else if (chosenButton === "Active") {
+    //     visual=firstTasksWithoutDeleted.filter((element:any):any=>{return !element.isDone})
+    // } else if (chosenButton === "Completed") {
+    //     visual=firstTasksWithoutDeleted.filter((element:any):any=>{return element.isDone})
+    // }
+    //
+    // function changeSelectedButton(relevantText:any){
+    //     setChosenButton(relevantText)
+    // }
+    //
+    // function deleteTask(taskId:any){
+    //     setFirstTasksWithoutDeleted(firstTasksWithoutDeleted.filter((element:any)=>{return element.id !== taskId}))
+    // }
 
     return (<>
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}

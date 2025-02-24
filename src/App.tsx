@@ -1,8 +1,8 @@
 import './App.css'
 import ToDoList from "./ToDoList.tsx";
 import Counter from "./Counter.tsx";
-import {useState} from "react";
 import {v1} from "uuid";
+import {useState} from "react";
 
 // state, (set)functionChangingState(this function is newState as a parameter), parameter is new State. useState is Hook.
 // <"All"|"Active"|"Completed"> <-These are possible values or types of state
@@ -55,90 +55,40 @@ const buttons: any = [
 
 function App() {
 
-    let visual: any
+    let visual:any
 
-    const [firstTasksWithoutDeletedTasks, setFirstTasksWithoutDeletedTasks] = useState(firstTasks)
+    const [firstTaskWithoutDelete, setFirstTaskWithoutDelete] = useState(firstTasks)
 
-    function deletedTasks(messageID: string) {
-        setFirstTasksWithoutDeletedTasks(firstTasksWithoutDeletedTasks.filter((element: any) => {
-            return element.id !== messageID
-        }))
+    function deleteButton(taskID:string) {
+        setFirstTaskWithoutDelete(firstTaskWithoutDelete.filter((element:any)=>{return element.id !== taskID}))
     }
 
-    function addButtonClick(message: string) {
-        setFirstTasksWithoutDeletedTasks(
+    function addButtonClick(message:string) {
+        setFirstTaskWithoutDelete(
             [
-                {id: v1(), name: message, isDone: false,}, ...firstTasksWithoutDeletedTasks
+                {id: v1(), name: message, isDone: false,},
+                ...firstTaskWithoutDelete
             ]
         )
     }
 
-    const [selected, setSelected] = useState<"All" | "Active" | "Completed">("All")
+    const [buttonSelect, setButtonSelect] = useState<"All"|"Active"|"Completed">("All")
 
-    function selectedButton(message: "All" | "Active" | "Completed") {
-        setSelected(message)
+    function chooseButton(message:"All"|"Active"|"Completed"){
+        setButtonSelect(message)
     }
-
-    if (selected === "All") {
-        visual = firstTasksWithoutDeletedTasks
-    } else if (selected === "Active") {
-        visual = firstTasksWithoutDeletedTasks.filter((element: any) => {
-            return !element.isDone
-        })
-    } else if (selected === "Completed") {
-        visual = firstTasksWithoutDeletedTasks.filter((element: any) => {
-            return element.isDone
-        })
+    if (buttonSelect === "All") {
+        visual=firstTaskWithoutDelete
+    } else if (buttonSelect === "Active") {
+        visual=firstTaskWithoutDelete.filter((element:any) => {return !element.isDone})
+    } else if (buttonSelect === "Completed") {
+        visual=firstTaskWithoutDelete.filter((element:any) => {return element.isDone})
     }
-
-
-    // const [buttonChoose, setButtonChoose] = useState<"All"|"Active"|"Completed">("All")
-    //
-    // const [currentState, setCurrentState] = useState(firstTasks)
-    //
-    // if(buttonChoose==="All") {
-    //     visual=currentState
-    // } else if(buttonChoose==="Active") {
-    //     visual=currentState.filter((element:any)=>{return !element.isDone})
-    // } else if(buttonChoose==="Completed") {
-    //     visual=currentState.filter((element:any)=>{return element.isDone})
-    // }
-    // function changeSelectedButton(newButton:any){
-    //     setButtonChoose(newButton)
-    // }
-    // function deleteTask(taskId:any){
-    //     setCurrentState(currentState.filter((element:any)=>{return element.id !== taskId}))
-    //     }
-    // test
-
-    // const[firstTasksWithoutDeleted, setFirstTasksWithoutDeleted] = useState(firstTasks)
-    //
-    // const [chosenButton, setChosenButton] = useState<"All"|"Active"|"Completed">("All")
-    //
-    // let visual:any
-    //
-    // if (chosenButton === "All") {
-    //     visual=firstTasksWithoutDeleted
-    // } else if (chosenButton === "Active") {
-    //     visual=firstTasksWithoutDeleted.filter((element:any):any=>{return !element.isDone})
-    // } else if (chosenButton === "Completed") {
-    //     visual=firstTasksWithoutDeleted.filter((element:any):any=>{return element.isDone})
-    // }
-    //
-    // function changeSelectedButton(relevantText:any){
-    //     setChosenButton(relevantText)
-    // }
-    //
-    // function deleteTask(taskId:any){
-    //     setFirstTasksWithoutDeleted(firstTasksWithoutDeleted.filter((element:any)=>{return element.id !== taskId}))
-    // }
 
     return (<>
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
-                // chooseSelectedButton={changeSelectedButton}
-                // deleteMe={deleteTask}
-                      selectedButtonFilter={selectedButton}
-                      deletedTasksFilter={deletedTasks}
+                      chooseButtonFilter={chooseButton}
+                      deleteButtonFilter={deleteButton}
                       addButtonClickFilter={addButtonClick}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
@@ -154,3 +104,4 @@ function App() {
 // Also callback for delete(x) button (only with console.log) ✓
 
 export default App
+

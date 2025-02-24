@@ -3,37 +3,28 @@ import {useState} from "react";
 
 function ToDoList(props: any) {
 
+    const [inputValue, setInputValue] = useState('')
 
-    const [inputValue, setInputValue] = useState("")
-
-    // const handleClick = ():void => {
-    //     if (props.deleteButton0) props.deleteButton0();
-    //     // if (props.deleteButton1) props.deleteButton1();
-    //     // if (props.deleteButton2) props.deleteButton2();
-    // }
 
     return (
         <div className="app">
             <div>
                 <h3>{props.title}</h3>
                 <div>
-                    {/*<input value={imputValue} onChange={(event)=>{setImputValue(event.currentTarget.value)}} />*/}
-                    <input
-                        value={inputValue}
-                        onChange={(event) => {
-                            setInputValue(event.currentTarget.value)
-                        }}
-                        onKeyDown={(event) => {
-                            if(event.key==="Enter") {
-                            props.addButtonClickFilter(inputValue)
-                        } }}
+                    <input value={inputValue}
+                           onChange={(event) => {
+                               setInputValue(event.currentTarget.value)
+                           }}
+                           onKeyPress={(event) => {
+                               if (event.key === "Enter") {
+                                   props.addButtonClickFilter(inputValue)
+                               }
+                           }}
                     />
                     <button onClick={() => {
                         props.addButtonClickFilter(inputValue)
-                    }}
-
-
-                        >+</button>
+                    }}>+
+                    </button>
                 </div>
                 <ul>
                     {
@@ -42,10 +33,7 @@ function ToDoList(props: any) {
                                 return (
                                     <li key={element.id}>
                                         <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
-                                        <button onClick={() => {
-                                            props.deletedTasksFilter(element.id)
-                                        }}>x
-                                        </button>
+                                        <button>x</button>
 
                                     </li>
                                 )
@@ -54,18 +42,17 @@ function ToDoList(props: any) {
                     }
 
                     <button onClick={() => {
-                        props.selectedButtonFilter("All")
+                        props.chooseButtonFilter("All")
                     }}>All
                     </button>
                     <button onClick={() => {
-                        props.selectedButtonFilter("Active")
+                        props.chooseButtonFilter("Active")
                     }}>Active
                     </button>
                     <button onClick={() => {
-                        props.selectedButtonFilter("Completed")
+                        props.chooseButtonFilter("Completed")
                     }}>Completed
                     </button>
-
                 </ul>
                 <div>
 

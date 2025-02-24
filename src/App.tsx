@@ -67,6 +67,15 @@ function App() {
     function whichButton(message:any){
         setPick(message);
     }
+    function clickOnAddButton(message: string) {
+
+
+        setFirstTaskWithoutDeletedTasks(
+            [
+                {id: v1(), name: message, isDone: false,}, ...firstTaskWithoutDeletedTasks
+            ]
+        )
+    }
 
     if (pick === "All"){
         visual=firstTaskWithoutDeletedTasks
@@ -81,6 +90,7 @@ function App() {
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
                       whichButtonFilter={whichButton}
                       deleteButtonFilter={deleteButton}
+                      clickOnAddButtonFilter={clickOnAddButton}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

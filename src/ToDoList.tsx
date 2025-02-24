@@ -8,7 +8,7 @@ function ToDoList(props: any) {
                 <h3>{props.title}</h3>
                 <div>
                     <input/>
-                    <button>+</button>
+                    <button onClick={()=>{props.clickOnAddButtonFilter}}>+</button>
                 </div>
                 <ul>
                     {

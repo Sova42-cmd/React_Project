@@ -16,8 +16,9 @@ function ToDoList(props: any) {
                             props.allTasks.map((element: any) => {
                                 return (
                                     <li key={element.id}>
-                                        <input type="checkbox" checked={element.isDone}/> <span>{element.name}</span>
-                                        <button>x</button>
+                                        <input type="checkbox" checked={element.isDone}/>
+                                        <span>{element.name}</span>
+                                        <button onClick={props.deleteButtonFilter(element.id)}>x</button>
 
                                     </li>
                                 )

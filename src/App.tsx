@@ -59,22 +59,28 @@ function App() {
 
     const [pick, setPick] = useState<"All"|"Active"|"Completed">("All");
 
+    const [firstTaskWithoutDeletedTasks, setFirstTaskWithoutDeletedTasks] = useState(firstTasks);
+
+    function deleteButton(TaskID:number) {
+        setFirstTaskWithoutDeletedTasks(firstTaskWithoutDeletedTasks.filter((element:any)=>{return element.id !==TaskID}));
+    }
     function whichButton(message:any){
         setPick(message);
     }
 
     if (pick === "All"){
-        visual=firstTasks
+        visual=firstTaskWithoutDeletedTasks
     } else if (pick === "Active"){
-        visual=firstTasks.filter((element:any)=>{return !element.isDone})
+        visual=firstTaskWithoutDeletedTasks.filter((element:any)=>{return !element.isDone})
     } else if (pick === "Completed"){
-        visual=firstTasks.filter((element:any)=>{return element.isDone})
+        visual=firstTaskWithoutDeletedTasks.filter((element:any)=>{return element.isDone})
     }
 
 
     return (<>
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
                       whichButtonFilter={whichButton}
+                      deleteButtonFilter={deleteButton}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

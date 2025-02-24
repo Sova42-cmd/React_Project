@@ -57,39 +57,24 @@ function App() {
 
     let visual:any
 
-    const [firstTaskWithoutDelete, setFirstTaskWithoutDelete] = useState(firstTasks)
+    const [pick, setPick] = useState<"All"|"Active"|"Completed">("All");
 
-    function deleteButton(taskID:string) {
-        setFirstTaskWithoutDelete(firstTaskWithoutDelete.filter((element:any)=>{return element.id !== taskID}))
+    function whichButton(message:any){
+        setPick(message);
     }
 
-    function addButtonClick(message:string) {
-        setFirstTaskWithoutDelete(
-            [
-                {id: v1(), name: message, isDone: false,},
-                ...firstTaskWithoutDelete
-            ]
-        )
+    if (pick === "All"){
+        visual=firstTasks
+    } else if (pick === "Active"){
+        visual=firstTasks.filter((element:any)=>{return !element.isDone})
+    } else if (pick === "Completed"){
+        visual=firstTasks.filter((element:any)=>{return element.isDone})
     }
 
-    const [buttonSelect, setButtonSelect] = useState<"All"|"Active"|"Completed">("All")
-
-    function chooseButton(message:"All"|"Active"|"Completed"){
-        setButtonSelect(message)
-    }
-    if (buttonSelect === "All") {
-        visual=firstTaskWithoutDelete
-    } else if (buttonSelect === "Active") {
-        visual=firstTaskWithoutDelete.filter((element:any) => {return !element.isDone})
-    } else if (buttonSelect === "Completed") {
-        visual=firstTaskWithoutDelete.filter((element:any) => {return element.isDone})
-    }
 
     return (<>
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
-                      chooseButtonFilter={chooseButton}
-                      deleteButtonFilter={deleteButton}
-                      addButtonClickFilter={addButtonClick}
+                      whichButtonFilter={whichButton}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

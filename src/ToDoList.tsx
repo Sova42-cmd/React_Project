@@ -1,30 +1,14 @@
 import './App.css'
-import {useState} from "react";
 
 function ToDoList(props: any) {
-
-    const [inputValue, setInputValue] = useState('')
-
 
     return (
         <div className="app">
             <div>
                 <h3>{props.title}</h3>
                 <div>
-                    <input value={inputValue}
-                           onChange={(event) => {
-                               setInputValue(event.currentTarget.value)
-                           }}
-                           onKeyPress={(event) => {
-                               if (event.key === "Enter") {
-                                   props.addButtonClickFilter(inputValue)
-                               }
-                           }}
-                    />
-                    <button onClick={() => {
-                        props.addButtonClickFilter(inputValue)
-                    }}>+
-                    </button>
+                    <input/>
+                    <button>+</button>
                 </div>
                 <ul>
                     {
@@ -41,18 +25,9 @@ function ToDoList(props: any) {
                             : <li>"There are no tasks"</li>
                     }
 
-                    <button onClick={() => {
-                        props.chooseButtonFilter("All")
-                    }}>All
-                    </button>
-                    <button onClick={() => {
-                        props.chooseButtonFilter("Active")
-                    }}>Active
-                    </button>
-                    <button onClick={() => {
-                        props.chooseButtonFilter("Completed")
-                    }}>Completed
-                    </button>
+                    <button onClick={()=>{props.whichButtonFilter("All")}}>All</button>
+                    <button onClick={()=>{props.whichButtonFilter("Active")}}>Active</button>
+                    <button onClick={()=>{props.whichButtonFilter("Completed")}}>Completed</button>
                 </ul>
                 <div>
 

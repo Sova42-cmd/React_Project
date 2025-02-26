@@ -59,38 +59,28 @@ function App() {
 
     const [pick, setPick] = useState<"All"|"Active"|"Completed">("All");
 
-    const [firstTaskWithoutDeletedTasks, setFirstTaskWithoutDeletedTasks] = useState(firstTasks);
+    const [withoutDelete, setWithoutDelete] = useState(firstTasks);
 
-    function deleteButton(TaskID:number) {
-        setFirstTaskWithoutDeletedTasks(firstTaskWithoutDeletedTasks.filter((element:any)=>{return element.id !==TaskID}));
+    function clickDeleteButton(messageID:any) {
+        setWithoutDelete(withoutDelete.filter((element:any)=>{return element.id !== messageID}));
     }
+
     function whichButton(message:any){
         setPick(message);
     }
-    function clickOnAddButton(message: string) {
-
-
-        setFirstTaskWithoutDeletedTasks(
-            [
-                {id: v1(), name: message, isDone: false,}, ...firstTaskWithoutDeletedTasks
-            ]
-        )
-    }
 
     if (pick === "All"){
-        visual=firstTaskWithoutDeletedTasks
+        visual=withoutDelete
     } else if (pick === "Active"){
-        visual=firstTaskWithoutDeletedTasks.filter((element:any)=>{return !element.isDone})
+        visual=withoutDelete.filter((element:any)=>{return !element.isDone})
     } else if (pick === "Completed"){
-        visual=firstTaskWithoutDeletedTasks.filter((element:any)=>{return element.isDone})
+        visual=withoutDelete.filter((element:any)=>{return element.isDone})
     }
-
 
     return (<>
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
                       whichButtonFilter={whichButton}
-                      deleteButtonFilter={deleteButton}
-                      clickOnAddButtonFilter={clickOnAddButton}
+                      clickDeleteButton={clickDeleteButton}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

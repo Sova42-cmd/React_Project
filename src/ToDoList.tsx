@@ -2,6 +2,8 @@ import './App.css'
 
 function ToDoList(props: any) {
 
+
+
     return (
         <div className="app">
             <div>
@@ -18,7 +20,7 @@ function ToDoList(props: any) {
                                     <li key={element.id}>
                                         <input type="checkbox" checked={element.isDone}/>
                                         <span>{element.name}</span>
-                                        <button onClick={props.deleteButtonFilter(element.id)}>x</button>
+                                        <button onClick={()=>{props.clickDeleteButton(element.id)}}>x</button>
 
                                     </li>
                                 )

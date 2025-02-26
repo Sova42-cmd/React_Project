@@ -1,15 +1,18 @@
 import './App.css'
+import {useState} from "react";
 
 function ToDoList(props: any) {
 
-
+    const [inputValue, setInputValue] = useState('');
 
     return (
         <div className="app">
             <div>
                 <h3>{props.title}</h3>
                 <div>
-                    <input/>
+                    <input
+                        value={inputValue}
+                        onChange={(event)=>{setInputValue(event.currentTarget.value)}}/>
                     <button onClick={()=>{props.clickOnAddButtonFilter}}>+</button>
                 </div>
                 <ul>

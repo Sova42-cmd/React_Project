@@ -61,12 +61,22 @@ function App() {
 
     const [withoutDelete, setWithoutDelete] = useState(firstTasks);
 
+
     function clickDeleteButton(messageID:any) {
         setWithoutDelete(withoutDelete.filter((element:any)=>{return element.id !== messageID}));
     }
 
     function whichButton(message:any){
         setPick(message);
+    }
+
+    function clickOnAddButton(message: string) {
+
+        setWithoutDelete(
+            [
+                {id: v1(), name: message, isDone: false,}, ...withoutDelete
+            ]
+        )
     }
 
     if (pick === "All"){
@@ -81,6 +91,7 @@ function App() {
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
                       whichButtonFilter={whichButton}
                       clickDeleteButton={clickDeleteButton}
+                      clickOnAddButtonFilter={clickOnAddButton}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

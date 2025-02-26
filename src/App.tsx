@@ -103,6 +103,7 @@ function App() {
 
 // Create 3 Callbacks, 3 lets(variable), with 2 filters, Create useState hook ✓
 // Also callback for delete(x) button (only with console.log) ✓
+// test1
 
 export default App
 

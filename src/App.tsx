@@ -70,11 +70,11 @@ function App() {
         setPick(message);
     }
 
-    function clickOnAddButton(message: string) {
+    function clickOnAddButton(info: string) {
 
         setWithoutDelete(
             [
-                {id: v1(), name: message, isDone: false,}, ...withoutDelete
+                {id: v1(), name: info, isDone: false,}, ...withoutDelete
             ]
         )
     }
@@ -106,6 +106,7 @@ function App() {
 // Also callback for delete(x) button (only with console.log) ✓
 // test1
 // test2
+// test 3
 
 export default App
 

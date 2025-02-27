@@ -70,14 +70,14 @@ function App() {
         setPick(message);
     }
 
-    function clickOnAddButton(info: string) {
-
-        setWithoutDelete(
-            [
-                {id: v1(), name: info, isDone: false,}, ...withoutDelete
-            ]
-        )
-    }
+    // function clickOnAddButton(info: string) {
+    //
+    //     setWithoutDelete(
+    //         [
+    //             {id: v1(), name: info, isDone: false,}, ...withoutDelete
+    //         ]
+    //     )
+    // }
 
     if (pick === "All"){
         visual=withoutDelete
@@ -91,7 +91,7 @@ function App() {
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
                       whichButtonFilter={whichButton}
                       clickDeleteButton={clickDeleteButton}
-                      clickOnAddButtonFilter={clickOnAddButton}
+                      // clickOnAddButtonFilter={clickOnAddButton}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

@@ -13,7 +13,7 @@ function ToDoList(props: any) {
                     <input
                         value={inputValue}
                         onChange={(event)=>{setInputValue(event.currentTarget.value)}}/>
-                    <button onClick={()=>{props.clickOnAddButtonFilter}}>+</button>
+                    <button>+</button>
                 </div>
                 <ul>
                     {

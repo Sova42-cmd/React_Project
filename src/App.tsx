@@ -4,9 +4,25 @@ import Counter from "./Counter.tsx";
 import {v1} from "uuid";
 import {useState} from "react";
 
+// In JavaScript, especially in React, code is often split into multiple files (or "modules") to keep things organized.
+// Instead of cramming all your components, functions, and logic into one giant file, you can:
+
 // state, (set)functionChangingState(this function is newState as a parameter), parameter is new State. useState is Hook.
 // <"All"|"Active"|"Completed"> <-These are possible values or types of state
 // and () here's the initial state.
+//
+// Now let’s talk about the brackets ({}) in imports.
+//
+//     In React, there are two kinds of exports:
+//
+//     Default exports (like above) — you don’t need brackets.
+//     Named exports — you do need brackets.
+//
+// React relies on modular JavaScript because:
+//
+//     Components are reusable — You build small, independent pieces (like buttons, forms, etc.) that you can combine.
+//     Code splitting — Breaking files into smaller pieces helps React load parts of your app only when needed.
+//     Readability — Each file has a clear purpose.
 
 let firstTasks: any = [
     {id: v1(), name: "Science", isDone: true,},
@@ -109,7 +125,14 @@ function App() {
 // test3
 // test4
 // test5
-// pnpm
+// pnpm it tells pnpm to check a list of commands (usually in a file called package.json) and run the one labeled "dev".
+//
+// Most of the time, this starts a program that makes your project run in "development mode" — so you can see your website or app in your browser and test changes live.
+//
+// It’s like pressing a "start" button for coding.
+
+// When something changes (like a user clicking a button),
+// React quickly updates only the parts that need changing — not the whole page. This makes your site fast and smooth.
 
 export default App
 

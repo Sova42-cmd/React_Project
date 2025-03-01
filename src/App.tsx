@@ -73,6 +73,17 @@ function App() {
 
     let visual:any
 
+    // const [pick, setPick] = useState<"All"|"Active"|"Completed">("All");
+    //
+    // const [withoutDelete, setWithoutDelete] = useState(firstTasks);
+    //
+    //
+    // function clickDeleteButton(messageID:any) {
+    //     setWithoutDelete(withoutDelete.filter((element:any)=>{return element.id !== messageID}));
+    // }
+    //
+    // function whichButton(message:any){
+    //     setPick(message);
     const [pick, setPick] = useState<"All"|"Active"|"Completed">("All");
 
     const [withoutDelete, setWithoutDelete] = useState(firstTasks);

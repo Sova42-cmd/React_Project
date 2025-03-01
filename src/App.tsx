@@ -84,10 +84,13 @@ function App() {
     //
     // function whichButton(message:any){
     //     setPick(message);
+    // const [pick, setPick] = useState<"All"|"Active"|"Completed">("All");
+    //
+    // const [withoutDelete, setWithoutDelete] = useState(firstTasks);
+
     const [pick, setPick] = useState<"All"|"Active"|"Completed">("All");
 
     const [withoutDelete, setWithoutDelete] = useState(firstTasks);
-
 
     function clickDeleteButton(messageID:any) {
         setWithoutDelete(withoutDelete.filter((element:any)=>{return element.id !== messageID}));
@@ -144,6 +147,7 @@ function App() {
 
 // When something changes (like a user clicking a button),
 // React quickly updates only the parts that need changing — not the whole page. This makes your site fast and smooth.
+// /plugin
 
 export default App
 

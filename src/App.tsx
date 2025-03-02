@@ -140,7 +140,8 @@ function App() {
 // test4
 // test5
 // test6
-// no chagnge
+// no change
+// no change 2
 // pnpm it tells pnpm to check a list of commands (usually in a file called package.json) and run the one labeled "dev".
 //
 // Most of the time, this starts a program that makes your project run in "development mode" — so you can see your website or app in your browser and test changes live.

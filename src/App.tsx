@@ -140,6 +140,11 @@ function App() {
 // a version control system, to track changes in code,
 // so multiple people can work on the same project without overwriting each other's work.
 
+// Repositories (or "repos") hold all project files and their history. Developers can "clone"
+// a repo to work on it locally, make changes, and then "commit" those changes. When they want to share their updates,
+//     they "push" their changes back to GitHub. Others can review
+// the changes, suggest edits, and "merge" them into the main project through "pull requests."
+
 // pnpm it tells pnpm to check a list of commands (usually in a file called package.json) and run the one labeled "dev".
 //
 // Most of the time, this starts a program that makes your project run in "development mode" — so you can see your website or app in your browser and test changes live.

@@ -145,6 +145,18 @@ function App() {
 //     they "push" their changes back to GitHub. Others can review
 // the changes, suggest edits, and "merge" them into the main project through "pull requests."
 
+// GitHub supports collaboration in several ways. Developers can use issues to report bugs, suggest new features,
+//     or ask questions — these act like to-do lists or discussion threads for a project.
+//     There are also discussions, which work like forums,
+//     allowing teams to talk about ideas or plans without tying them directly to specific code changes.
+//
+//     To streamline workflows, GitHub offers actions —
+// these are automation tools that can run tests, build projects, or deploy code whenever certain events happen,
+//     like when new code is pushed. This helps catch errors early or update apps automatically.
+//
+//     All these tools — issues, discussions, and actions — work alongside the main version control features,
+//     making it easier for teams to organize their work, track progress, and keep their projects running smoothly.
+
 // pnpm it tells pnpm to check a list of commands (usually in a file called package.json) and run the one labeled "dev".
 //
 // Most of the time, this starts a program that makes your project run in "development mode" — so you can see your website or app in your browser and test changes live.

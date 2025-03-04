@@ -134,15 +134,12 @@ function App() {
 
 // Create 3 Callbacks, 3 lets(variable), with 2 filters, Create useState hook ✓
 // Also callback for delete(x) button (only with console.log) ✓
-// test1
-// test2
-// test3
-// test4
-// test5
-// test6
-// no change
-// no change 2
-// no change 3
+
+// GitHub is an online platform that hosts code repositories,
+// allowing developers to store, manage, and collaborate on projects. It uses Git,
+// a version control system, to track changes in code,
+// so multiple people can work on the same project without overwriting each other's work.
+
 // pnpm it tells pnpm to check a list of commands (usually in a file called package.json) and run the one labeled "dev".
 //
 // Most of the time, this starts a program that makes your project run in "development mode" — so you can see your website or app in your browser and test changes live.

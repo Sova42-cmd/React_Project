@@ -71,42 +71,42 @@ const buttons: any = [
 
 function App() {
 
-    let visual:any=firstTasks
+    let visual
 
-    const [pickMe, setPickMe] = useState<"All"|"Active"|"Completed">("All")
+    const [currentButton, setCurrentButton] = useState<"All"|"Active"|"Completed">("All")
+    const [tasksWithoutDelete, setTasksWithoutDelete] = useState(firstTasks)
 
-    const [deleteMe, setDeleteMe] = useState(firstTasks)
-
-    function deleteTask(messageID:any) {
-        setDeleteMe(deleteMe.filter((element:any)=>{return element.id !== messageID}))
+    function removeButton(messageID:any){
+        setTasksWithoutDelete(tasksWithoutDelete.filter((element:any)=>{return element.id !==messageID}))
     }
 
-    function buttonSelect(message:"All"|"Active"|"Completed") {
-        setPickMe(message)
+    function handleButtonClick(message:any) {
+        setCurrentButton(message)
     }
 
-    function addMe(messageId:any) {
-        setDeleteMe(
+    function addTask(message:any) {
+        setTasksWithoutDelete(
             [
-                {id:v1(), name:messageId, isDone:false,}, ...deleteMe
+                {id: v1(), name: message, isDone: false}, ...tasksWithoutDelete
             ]
         )
     }
 
-
-    if (pickMe === "All") {
-        visual=deleteMe
-    } else if (pickMe === "Active") {
-        visual=deleteMe.filter((element:any)=>{return !element.isDone})
-    } else if (pickMe === "Completed") {
-        visual=deleteMe.filter((element:any)=>{return element.isDone})
+    if (currentButton === "All") {
+        visual=tasksWithoutDelete
+    } else if (currentButton === "Active") {
+        visual=tasksWithoutDelete.filter((element:any)=>{return !element.isDone})
+    } else if (currentButton === "Completed") {
+        visual=tasksWithoutDelete.filter((element:any)=>{return element.isDone})
     }
+
+    console.log(visual)
 
     return (<>
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
-                      buttonSelect={buttonSelect}
-                      deleteTask={deleteTask}
-                      addMe={addMe}
+                      handleButtonClick={handleButtonClick}
+                      removeButton={removeButton}
+                      addTask={addTask}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}

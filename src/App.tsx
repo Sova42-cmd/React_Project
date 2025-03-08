@@ -1,4 +1,3 @@
-import './App.css'
 import {v1} from "uuid";
 import ToDoList from "./ToDoList.tsx";
 import {useState} from "react";
@@ -15,46 +14,45 @@ let firstTasks = [
 
 function App() {
 
-    let tasksToShow: any = firstTasks;
+    let tasksToShow = firstTasks;
 
-    const [selectedButton, setSelectedButton] = useState<"All" | "Active" | "Completed">("All")
+    const [bottomButtons, setBottomButtons] = useState<"All" | "Active" | "Completed">("All")
 
-    const [tasksWithoutRemove, setTasksWithoutRemove] = useState(firstTasks)
+    const [tasksToShowWithoutDelete, setTasksToShowWithoutDelete] = useState(firstTasks);
 
-    function removeTask(messageID: any) {
-        setTasksWithoutRemove(tasksWithoutRemove.filter((element: any) => {
-            return element.id !== messageID
+    function removeTask(taskID: any) {
+        setTasksToShowWithoutDelete(tasksToShowWithoutDelete.filter((element) => {
+            return element.id !== taskID
         }))
     }
 
-    function handleSelected(message: "All" | "Active" | "Completed") {
-        setSelectedButton(message)
+    function tellingWhichButton(buttons: "All" | "Active" | "Completed") {
+        setBottomButtons(buttons)
     }
 
-    function addTask(message: string) {
-        setTasksWithoutRemove(
+    function addTask(taskID: any) {
+        setTasksToShowWithoutDelete(
             [
-                {id: v1(), name: message, isDone: false}, ...tasksWithoutRemove
+                {id: v1(), name: taskID, isDone: false}, ...tasksToShowWithoutDelete
             ]
         )
     }
 
-    if (selectedButton === "All") {
-        tasksToShow = tasksWithoutRemove
-    } else if (selectedButton === "Active") {
-        tasksToShow = tasksWithoutRemove.filter((element) => {
+    if (bottomButtons === "All") {
+        tasksToShow = tasksToShowWithoutDelete;
+    } else if (bottomButtons === "Active") {
+        tasksToShow = tasksToShowWithoutDelete.filter((element) => {
             return !element.isDone
         })
-    } else if (selectedButton === "Completed") {
-        tasksToShow = tasksWithoutRemove.filter((element) => {
+    } else if (bottomButtons === "Completed") {
+        tasksToShow = tasksToShowWithoutDelete.filter((element) => {
             return element.isDone
         })
     }
 
-
     return (<>
 
-            <ToDoList addTask={addTask} removeTask={removeTask} handleSelected={handleSelected}
+            <ToDoList addTaskFilter={addTask} removeTaskFilter={removeTask} tellingWhichButtonFilter={tellingWhichButton}
                       allTasks={tasksToShow}></ToDoList>
 
         </>

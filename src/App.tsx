@@ -71,57 +71,42 @@ const buttons: any = [
 
 function App() {
 
-    let visual:any
+    let visual:any=firstTasks
 
-    // const [pick, setPick] = useState<"All"|"Active"|"Completed">("All");
-    //
-    // const [withoutDelete, setWithoutDelete] = useState(firstTasks);
-    //
-    //
-    // function clickDeleteButton(messageID:any) {
-    //     setWithoutDelete(withoutDelete.filter((element:any)=>{return element.id !== messageID}));
-    // }
-    //
-    // function whichButton(message:any){
-    //     setPick(message);
-    // const [pick, setPick] = useState<"All"|"Active"|"Completed">("All");
-    //
-    // const [withoutDelete, setWithoutDelete] = useState(firstTasks);
+    const [pickMe, setPickMe] = useState<"All"|"Active"|"Completed">("All")
 
-    const [pick, setPick] = useState<"All"|"Active"|"Completed">("All");
+    const [deleteMe, setDeleteMe] = useState(firstTasks)
 
-    const [withoutDelete, setWithoutDelete] = useState(firstTasks);
-
-    function clickDeleteButton(messageID:any) {
-        setWithoutDelete(withoutDelete.filter((element:any)=>{return element.id !== messageID}));
+    function deleteTask(messageID:any) {
+        setDeleteMe(deleteMe.filter((element:any)=>{return element.id !== messageID}))
     }
 
-    function whichButton(message:any){
-        setPick(message);
+    function buttonSelect(message:"All"|"Active"|"Completed") {
+        setPickMe(message)
     }
 
-    // function clickOnAddButton(info: string) {
-    //
-    //     setWithoutDelete(
-    //         [
-    //             {id: v1(), name: info, isDone: false,}, ...withoutDelete
-    //         ]
-    //     )
-    // }
+    function addMe(messageId:any) {
+        setDeleteMe(
+            [
+                {id:v1(), name:messageId, isDone:false,}, ...deleteMe
+            ]
+        )
+    }
 
-    if (pick === "All"){
-        visual=withoutDelete
-    } else if (pick === "Active"){
-        visual=withoutDelete.filter((element:any)=>{return !element.isDone})
-    } else if (pick === "Completed"){
-        visual=withoutDelete.filter((element:any)=>{return element.isDone})
+
+    if (pickMe === "All") {
+        visual=deleteMe
+    } else if (pickMe === "Active") {
+        visual=deleteMe.filter((element:any)=>{return !element.isDone})
+    } else if (pickMe === "Completed") {
+        visual=deleteMe.filter((element:any)=>{return element.isDone})
     }
 
     return (<>
             <ToDoList title={"Necessarily Languages"} allTasks={visual} buttons={buttons}
-                      whichButtonFilter={whichButton}
-                      clickDeleteButton={clickDeleteButton}
-                      // clickOnAddButtonFilter={clickOnAddButton}
+                      buttonSelect={buttonSelect}
+                      deleteTask={deleteTask}
+                      addMe={addMe}
             />
             {/*<ToDoList title={"Preferred to Know"} allTasks={filteredTasks} buttons={buttons}/>*/}
             {/*<ToDoList title={"Optional"} allTasks={filteredTasks} buttons={buttons}/>*/}
@@ -132,40 +117,6 @@ function App() {
     )
 }
 
-// Create 3 Callbacks, 3 lets(variable), with 2 filters, Create useState hook ✓
-// Also callback for delete(x) button (only with console.log) ✓
-
-// GitHub is an online platform that hosts code repositories,
-// allowing developers to store, manage, and collaborate on projects. It uses Git,
-// a version control system, to track changes in code,
-// so multiple people can work on the same project without overwriting each other's work.
-
-// Repositories (or "repos") hold all project files and their history. Developers can "clone"
-// a repo to work on it locally, make changes, and then "commit" those changes. When they want to share their updates,
-//     they "push" their changes back to GitHub. Others can review
-// the changes, suggest edits, and "merge" them into the main project through "pull requests."
-
-// GitHub supports collaboration in several ways. Developers can use issues to report bugs, suggest new features,
-//     or ask questions — these act like to-do lists or discussion threads for a project.
-//     There are also discussions, which work like forums,
-//     allowing teams to talk about ideas or plans without tying them directly to specific code changes.
-//
-//     To streamline workflows, GitHub offers actions —
-// these are automation tools that can run tests, build projects, or deploy code whenever certain events happen,
-//     like when new code is pushed. This helps catch errors early or update apps automatically.
-//
-//     All these tools — issues, discussions, and actions — work alongside the main version control features,
-//     making it easier for teams to organize their work, track progress, and keep their projects running smoothly.
-
-// pnpm it tells pnpm to check a list of commands (usually in a file called package.json) and run the one labeled "dev".
-//
-// Most of the time, this starts a program that makes your project run in "development mode" — so you can see your website or app in your browser and test changes live.
-//
-// It’s like pressing a "start" button for coding.
-
-// When something changes (like a user clicking a button),
-// React quickly updates only the parts that need changing — not the whole page. This makes your site fast and smooth.
-// /plugin
 
 export default App
 

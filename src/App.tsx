@@ -19,27 +19,43 @@ function App() {
 
     const [selectedButton, setSelectedButton] = useState<"All" | "Active" | "Completed">("All")
 
+    const [tasksWithoutRemove, setTasksWithoutRemove] = useState(firstTasks)
+
+    function removeTask(messageID: any) {
+        setTasksWithoutRemove(tasksWithoutRemove.filter((element: any) => {
+            return element.id !== messageID
+        }))
+    }
+
     function handleSelected(message: "All" | "Active" | "Completed") {
         setSelectedButton(message)
     }
 
+    function addTask(message: string) {
+        setTasksWithoutRemove(
+            [
+                {id: v1(), name: message, isDone: false}, ...tasksWithoutRemove
+            ]
+        )
+    }
+
     if (selectedButton === "All") {
-        tasksToShow = firstTasks
+        tasksToShow = tasksWithoutRemove
     } else if (selectedButton === "Active") {
-        tasksToShow = firstTasks.filter((element) => {
+        tasksToShow = tasksWithoutRemove.filter((element) => {
             return !element.isDone
         })
     } else if (selectedButton === "Completed") {
-        tasksToShow = firstTasks.filter((element) => {
+        tasksToShow = tasksWithoutRemove.filter((element) => {
             return element.isDone
         })
     }
 
 
-
     return (<>
 
-            <ToDoList handleSelected={handleSelected} allTasks={tasksToShow}></ToDoList>
+            <ToDoList addTask={addTask} removeTask={removeTask} handleSelected={handleSelected}
+                      allTasks={tasksToShow}></ToDoList>
 
         </>
     )

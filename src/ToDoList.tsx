@@ -1,11 +1,12 @@
 import {useState} from "react";
+import './ToDoList.css';
 
 function ToDoList(props: any) {
 
     const [inputValue, setInputValue] = useState('')
 
     return (<>
-            <div>
+            <div className="to-do-list">
                 <input
                     value={inputValue}
                     onChange={(event) => setInputValue(event.target.value)}

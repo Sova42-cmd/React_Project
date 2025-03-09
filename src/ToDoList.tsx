@@ -1,55 +1,44 @@
 import {useState} from "react";
-import './ToDoList.css';
 
-function ToDoList(props: any) {
+function ToDoList(props:any) {
 
-    const [inputValue, setInputValue] = useState('')
+    const [inputValue, setInputValue] = useState('');
 
-    return (<>
-            <div className="to-do-list">
-                <input
-                    value={inputValue}
-                    onChange={(event) => setInputValue(event.target.value)}
-                    onKeyDown={(event) => {
-                        if (event.key === 'Enter') {
-                    props.addTaskFilter(inputValue)
-                        }
-                    }}
-                />
-                <button onClick={() => {
-                    props.addTaskFilter(inputValue)
-                }}>+
-                </button>
-                <ul>
+    return (
+        <div>
+         <div>
+            <input
+            value={inputValue}
+            onChange={(event) => setInputValue(event.target.value)}
+            onKeyDown={(event)=>{if (event.key === 'Enter'){
+                props.addTaskFilter(inputValue);
+            }}}
+            />
+            <button onClick={()=>{props.addTaskFilter(inputValue)}}>+</button>
 
-                    {props.allTasks.map((element: any) => {
-                        return <li>
-                            <input type='checkbox' checked={element.isDone}/>
+             <ul></ul>
+
+            {props.tasksToShow.map((element:any)=>{
+                return (
+
+                        <li>
+                            <input
+                                checked={element.isDone}
+                            type="checkbox"/>
                             {element.name}
-                            <button onClick={() => {
-                                props.removeTaskFilter(element.id)
-                            }}>X
-                            </button>
+
+                            <button onClick={()=>{props.deleteTaskFilter(element.id)}}>X</button>
                         </li>
+                )
+            })}
 
-                    })}
 
-                </ul>
-                <button onClick={() => {
-                    props.tellingWhichButtonFilter("All")
-                }}>All
-                </button>
-                <button onClick={() => {
-                    props.tellingWhichButtonFilter("Active")
-                }}>Active
-                </button>
-                <button onClick={() => {
-                    props.tellingWhichButtonFilter("Completed")
-                }}>Completed
-                </button>
-            </div>
-        </>
+            <button onClick={()=>{props.handleBottomButtons("All")}}>All</button>
+            <button onClick={()=>{props.handleBottomButtons("Active")}}>Active</button>
+            <button onClick={()=>{props.handleBottomButtons("Completed")}}>Completed</button>
+        </div>
+        <div></div>
+    </div>
     )
 }
-
 export default ToDoList

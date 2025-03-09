@@ -1,60 +1,59 @@
-import {v1} from "uuid";
 import ToDoList from "./ToDoList.tsx";
+import {v1} from "uuid";
 import {useState} from "react";
 
-let firstTasks = [
-    {id: v1(), name: "Science", isDone: true},
-    {id: v1(), name: "History", isDone: false},
-    {id: v1(), name: "Mathematics", isDone: false},
-    {id: v1(), name: "Physical Education", isDone: true},
-    {id: v1(), name: "Subject", isDone: true},
-    {id: v1(), name: "Subject bul", isDone: false},
-
+let initialTasks = [
+    {id: v1(), name: "Subject 1", isDone: false},
+    {id: v1(), name: "Subject 2", isDone: true},
+    {id: v1(), name: "Subject 3", isDone: true},
+    {id: v1(), name: "Subject 4", isDone: false},
+    {id: v1(), name: "Subject 5", isDone: false},
+    {id: v1(), name: "Subject 6", isDone: true},
 ]
+
+// console.log(initialTasks)
 
 function App() {
 
-    let tasksToShow = firstTasks;
+    let tasksToChild = initialTasks
 
-    const [bottomButtons, setBottomButtons] = useState<"All" | "Active" | "Completed">("All")
+    const [buttonPick, setButtonPick] = useState<"All" | "Active" | "Completed">("All")
 
-    const [tasksToShowWithoutDelete, setTasksToShowWithoutDelete] = useState(firstTasks);
+    const [initialWithoutDelete, setInitialWithoutDelete] = useState(initialTasks)
 
-    function removeTask(taskID: any) {
-        setTasksToShowWithoutDelete(tasksToShowWithoutDelete.filter((element) => {
-            return element.id !== taskID
-        }))
-    }
-
-    function tellingWhichButton(buttons: "All" | "Active" | "Completed") {
-        setBottomButtons(buttons)
-    }
-
-    function addTask(taskID: any) {
-        setTasksToShowWithoutDelete(
+    function addTask(taskName:string) {
+        setInitialWithoutDelete(
             [
-                {id: v1(), name: taskID, isDone: false}, ...tasksToShowWithoutDelete
+                {id: v1(), name: taskName, isDone: false}, ...initialWithoutDelete
             ]
         )
     }
 
-    if (bottomButtons === "All") {
-        tasksToShow = tasksToShowWithoutDelete;
-    } else if (bottomButtons === "Active") {
-        tasksToShow = tasksToShowWithoutDelete.filter((element) => {
+    function deleteTask(taskID:any) {
+        setInitialWithoutDelete(initialWithoutDelete.filter((element) => {
+            return element.id !== taskID
+        }))
+    }
+
+    function handleBottomButtons(message: "All"|"Active"|"Completed") {
+        setButtonPick(message)
+    }
+
+    if (buttonPick === "All") {
+        tasksToChild = initialWithoutDelete;
+    } else if (buttonPick === "Active") {
+        tasksToChild = initialWithoutDelete.filter((element) => {
             return !element.isDone
         })
-    } else if (bottomButtons === "Completed") {
-        tasksToShow = tasksToShowWithoutDelete.filter((element) => {
+    } else if (buttonPick === "Completed") {
+        tasksToChild = initialWithoutDelete.filter((element) => {
             return element.isDone
         })
     }
 
     return (<>
 
-            <ToDoList addTaskFilter={addTask} removeTaskFilter={removeTask} tellingWhichButtonFilter={tellingWhichButton}
-                      allTasks={tasksToShow}></ToDoList>
-
+            <ToDoList addTaskFilter={addTask} deleteTaskFilter={deleteTask} handleBottomButtons={handleBottomButtons} tasksToShow={tasksToChild}/>
         </>
     )
 }

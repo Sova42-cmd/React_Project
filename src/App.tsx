@@ -11,49 +11,49 @@ let initialTasks = [
     {id: v1(), name: "Subject 6", isDone: true},
 ]
 
-// console.log(initialTasks)
 
 function App() {
 
-    let tasksToChild = initialTasks
+    const [buttonsBelow, setButtonsBelow] = useState<"All" | "Active" | "Completed">("All")
 
-    const [buttonPick, setButtonPick] = useState<"All" | "Active" | "Completed">("All")
+    const [withoutDelete, setWithoutDelete] = useState(initialTasks)
 
-    const [initialWithoutDelete, setInitialWithoutDelete] = useState(initialTasks)
-
-    function addTask(taskName:string) {
-        setInitialWithoutDelete(
-            [
-                {id: v1(), name: taskName, isDone: false}, ...initialWithoutDelete
-            ]
-        )
+    function handleButtonsBelow(message: "All" | "Active" | "Completed") {
+        setButtonsBelow(message);
     }
 
-    function deleteTask(taskID:any) {
-        setInitialWithoutDelete(initialWithoutDelete.filter((element) => {
+    function deleteTask(taskID: any) {
+        setWithoutDelete(withoutDelete.filter((element) => {
             return element.id !== taskID
         }))
     }
 
-    function handleBottomButtons(message: "All"|"Active"|"Completed") {
-        setButtonPick(message)
+    function addTask(inputName: any) {
+        setWithoutDelete(
+            [
+                {id: v1(), name: inputName, isDone: false}, ...withoutDelete
+            ]
+        )
     }
 
-    if (buttonPick === "All") {
-        tasksToChild = initialWithoutDelete;
-    } else if (buttonPick === "Active") {
-        tasksToChild = initialWithoutDelete.filter((element) => {
+    if (buttonsBelow === "All") {
+        initialTasks = withoutDelete;
+    } else if (buttonsBelow === "Active") {
+        initialTasks = withoutDelete.filter((element) => {
             return !element.isDone
-        })
-    } else if (buttonPick === "Completed") {
-        tasksToChild = initialWithoutDelete.filter((element) => {
+        });
+    } else if (buttonsBelow === "Completed") {
+        initialTasks = withoutDelete.filter((element) => {
             return element.isDone
-        })
+        });
     }
+
 
     return (<>
 
-            <ToDoList addTaskFilter={addTask} deleteTaskFilter={deleteTask} handleBottomButtons={handleBottomButtons} tasksToShow={tasksToChild}/>
+            <ToDoList  addTaskFilter={addTask} deleteTaskFilter={deleteTask} handleButtonsBelowFilter={handleButtonsBelow}
+                      initialTasksFilter={initialTasks}/>
+
         </>
     )
 }

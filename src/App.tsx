@@ -14,45 +14,49 @@ let initialTasks = [
 
 function App() {
 
-    const [buttonsBelow, setButtonsBelow] = useState<"All" | "Active" | "Completed">("All")
+    let initialTasksAlternative = initialTasks
 
-    const [withoutDelete, setWithoutDelete] = useState(initialTasks)
+    const [lowerButtons, setLowerButtons] = useState<"All" | "Active" | "Completed">("All")
 
-    function handleButtonsBelow(message: "All" | "Active" | "Completed") {
-        setButtonsBelow(message);
-    }
+    const [initialTasksDelete, setInitialTasksDelete] = useState(initialTasksAlternative)
 
-    function deleteTask(taskID: any) {
-        setWithoutDelete(withoutDelete.filter((element) => {
-            return element.id !== taskID
-        }))
-    }
-
-    function addTask(inputName: any) {
-        setWithoutDelete(
+    function addNewTask(sourceName:any) {
+        setInitialTasksDelete(
             [
-                {id: v1(), name: inputName, isDone: false}, ...withoutDelete
+                {id: v1(), name: sourceName, isDone: false}, ...initialTasksDelete
             ]
         )
     }
 
-    if (buttonsBelow === "All") {
-        initialTasks = withoutDelete;
-    } else if (buttonsBelow === "Active") {
-        initialTasks = withoutDelete.filter((element) => {
-            return !element.isDone
-        });
-    } else if (buttonsBelow === "Completed") {
-        initialTasks = withoutDelete.filter((element) => {
-            return element.isDone
-        });
+    function removeTask(taskID: any) {
+        setInitialTasksDelete(initialTasksDelete.filter((element: any) => {
+            return element.id !== taskID;
+        }))
+    }
+
+    function handleLowerButtonClick(message: any) {
+        setLowerButtons(message)
     }
 
 
+    if (lowerButtons === "All") {
+    } else if (lowerButtons === "Active") {
+        initialTasksAlternative = initialTasksDelete.filter((element) => {
+            return !element.isDone
+        })
+    } else if (lowerButtons === "Completed") {
+        initialTasksAlternative = initialTasksDelete.filter((element) => {
+            return element.isDone
+        })
+    }
+
     return (<>
 
-            <ToDoList  addTaskFilter={addTask} deleteTaskFilter={deleteTask} handleButtonsBelowFilter={handleButtonsBelow}
-                      initialTasksFilter={initialTasks}/>
+            <ToDoList handleLowerButtonClickFilter={handleLowerButtonClick}
+                      initialTasksFilter={initialTasksAlternative}
+                      removeTaskFilter={removeTask}
+                      addNewTaskFilter={addNewTask}
+            />
 
         </>
     )

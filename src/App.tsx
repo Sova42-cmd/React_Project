@@ -51,12 +51,26 @@ function App() {
         })
     }
 
+
+    function handleChangeTaskStatus(taskId:string, newStatus:boolean) {
+        const foundTask = initialTasksAlternative.find((element) => {
+            return element.id === taskId
+        })
+
+        foundTask.isDone=newStatus
+
+        setInitialTasksDelete([...initialTasksDelete])
+
+    }
+
+
     return (<>
 
             <ToDoList handleLowerButtonClickFilter={handleLowerButtonClick}
                       initialTasksFilter={initialTasksAlternative}
                       removeTaskFilter={removeTask}
                       addNewTaskFilter={addNewTask}
+                      changeTaskStatus={handleChangeTaskStatus}
             />
 
         </>

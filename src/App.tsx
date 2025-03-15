@@ -14,13 +14,13 @@ let initialTasks = [
 
 function App() {
 
-    let initialTasksAlternative = initialTasks
+    let initialTasksAlternative: any = initialTasks
 
     const [lowerButtons, setLowerButtons] = useState<"All" | "Active" | "Completed">("All")
 
     const [initialTasksDelete, setInitialTasksDelete] = useState(initialTasksAlternative)
 
-    function addNewTask(sourceName:any) {
+    function addNewTask(sourceName: any) {
         setInitialTasksDelete(
             [
                 {id: v1(), name: sourceName, isDone: false}, ...initialTasksDelete
@@ -40,12 +40,13 @@ function App() {
 
 
     if (lowerButtons === "All") {
+        initialTasksAlternative = initialTasksDelete
     } else if (lowerButtons === "Active") {
-        initialTasksAlternative = initialTasksDelete.filter((element) => {
+        initialTasksAlternative = initialTasksDelete.filter((element:any) => {
             return !element.isDone
         })
     } else if (lowerButtons === "Completed") {
-        initialTasksAlternative = initialTasksDelete.filter((element) => {
+        initialTasksAlternative = initialTasksDelete.filter((element:any) => {
             return element.isDone
         })
     }

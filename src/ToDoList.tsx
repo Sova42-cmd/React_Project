@@ -1,4 +1,5 @@
 import {useState} from "react";
+import "./ToDoList.css";
 
 function ToDoList(props: any) {
 
@@ -6,7 +7,7 @@ function ToDoList(props: any) {
 
     return (
         <div>
-            <div>
+            <div className="to-do-list">
                 <input
                 value={inputValue}
                 onChange={(event) => setInputValue(event.target.value)}
@@ -38,7 +39,9 @@ function ToDoList(props: any) {
                 <button onClick={()=>{props.handleLowerButtonClickFilter("Active")}}>Active</button>
                 <button onClick={()=>{props.handleLowerButtonClickFilter("Completed")}}>Completed</button>
             </div>
-            <div></div>
+            <div>
+
+            </div>
         </div>
     )
 }

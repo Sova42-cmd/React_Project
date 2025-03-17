@@ -18,8 +18,14 @@ function App() {
 
     const [buttonSelect, setButtonSelect] = useState<"All" | "Active" | "Completed">("All")
 
+    const [initialTasksDeleted, setInitialTasksDeleted] = useState(initialTasks)
+
     function handleButtonSelect(message: "All" | "Active" | "Completed") {
         setButtonSelect(message)
+    }
+
+    function deleteTask(id: number) {
+        setInitialTasksDeleted(initialTasksDeleted.filter(element)=>{return element !== id;})
     }
 
     if (buttonSelect === "All") {

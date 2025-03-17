@@ -16,61 +16,32 @@ function App() {
 
     let initialTasksAlternative: any = initialTasks
 
-    const [lowerButtons, setLowerButtons] = useState<"All" | "Active" | "Completed">("All")
+    const [buttonSelect, setButtonSelect] = useState<"All" | "Active" | "Completed">("All")
 
-    const [initialTasksDelete, setInitialTasksDelete] = useState(initialTasksAlternative)
-
-    function addNewTask(sourceName: any) {
-        setInitialTasksDelete(
-            [
-                {id: v1(), name: sourceName, isDone: false}, ...initialTasksDelete
-            ]
-        )
+    function handleButtonSelect(message: "All" | "Active" | "Completed") {
+        setButtonSelect(message)
     }
 
-    function removeTask(taskID: any) {
-        setInitialTasksDelete(initialTasksDelete.filter((element: any) => {
-            return element.id !== taskID;
-        }))
-    }
-
-    function handleLowerButtonClick(message: any) {
-        setLowerButtons(message)
-    }
-
-
-    if (lowerButtons === "All") {
-        initialTasksAlternative = initialTasksDelete
-    } else if (lowerButtons === "Active") {
-        initialTasksAlternative = initialTasksDelete.filter((element:any) => {
+    if (buttonSelect === "All") {
+        console.log("Im all button")
+        initialTasks = initialTasksAlternative
+    } else if (buttonSelect === "Active") {
+        console.log("Im active")
+        initialTasks = initialTasksAlternative.filter((element:any) => {
             return !element.isDone
         })
-    } else if (lowerButtons === "Completed") {
-        initialTasksAlternative = initialTasksDelete.filter((element:any) => {
+    } else if (buttonSelect === "Completed") {
+        console.log("Im completed")
+        initialTasks = initialTasksAlternative.filter((element:any) => {
             return element.isDone
         })
     }
 
 
-    function handleChangeTaskStatus(taskId:string, newStatus:boolean) {
-        const foundTask = initialTasksAlternative.find((element) => {
-            return element.id === taskId
-        })
-
-        foundTask.isDone=newStatus
-
-        setInitialTasksDelete([...initialTasksDelete])
-
-    }
-
-
     return (<>
 
-            <ToDoList handleLowerButtonClickFilter={handleLowerButtonClick}
-                      initialTasksFilter={initialTasksAlternative}
-                      removeTaskFilter={removeTask}
-                      addNewTaskFilter={addNewTask}
-                      changeTaskStatus={handleChangeTaskStatus}
+            <ToDoList tasksToShow={initialTasksAlternative}
+                      handleButtonSelectChild={handleButtonSelect}
             />
 
         </>

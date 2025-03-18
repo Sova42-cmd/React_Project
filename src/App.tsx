@@ -18,27 +18,19 @@ function App() {
 
     const [buttonSelect, setButtonSelect] = useState<"All" | "Active" | "Completed">("All")
 
-    const [initialTasksDeleted, setInitialTasksDeleted] = useState(initialTasks)
-
     function handleButtonSelect(message: "All" | "Active" | "Completed") {
         setButtonSelect(message)
     }
 
-    function deleteTask(id: number) {
-        setInitialTasksDeleted(initialTasksDeleted.filter(element)=>{return element !== id;})
-    }
 
     if (buttonSelect === "All") {
-        console.log("Im all button")
-        initialTasks = initialTasksAlternative
+        initialTasksAlternative = initialTasks
     } else if (buttonSelect === "Active") {
-        console.log("Im active")
-        initialTasks = initialTasksAlternative.filter((element:any) => {
+        initialTasksAlternative = initialTasks.filter((element:any) => {
             return !element.isDone
         })
     } else if (buttonSelect === "Completed") {
-        console.log("Im completed")
-        initialTasks = initialTasksAlternative.filter((element:any) => {
+        initialTasksAlternative = initialTasks.filter((element:any) => {
             return element.isDone
         })
     }

@@ -1,13 +1,23 @@
 import "./ToDoList.css";
+import {useState} from "react";
 
 function ToDoList(props: any) {
 
+    const [inputValue, setInputValue] = useState("");
 
     return (
         <div>
             <div className="to-do-list">
-                <input/>
-                <button>+</button>
+                <input
+                value={inputValue}
+                onChange={(event) => setInputValue(event.target.value)}
+                onKeyDown={(event)=>{
+                    if (event.key === 'Enter') {
+                        props.addTaskButtonChild(inputValue);
+                    }
+                }}
+                />
+                <button onClick={()=>{props.addTaskButtonChild(inputValue)}}>+</button>
 
                 {props.tasksToShow.map((element: any) => {
 
@@ -18,7 +28,7 @@ function ToDoList(props: any) {
 
                                 />
                                 <span>{element.name}</span>
-                                <button>X</button>
+                                <button onClick={()=>{props.handleButtonDeleteChild(element.id)}}>X</button>
                             </li>
                         </>
                     )

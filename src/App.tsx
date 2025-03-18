@@ -18,19 +18,34 @@ function App() {
 
     const [buttonSelect, setButtonSelect] = useState<"All" | "Active" | "Completed">("All")
 
+    const [initialTasksDeleteButton, setInitialTasksDeleteButton] = useState(initialTasks)
+
     function handleButtonSelect(message: "All" | "Active" | "Completed") {
         setButtonSelect(message)
     }
 
+    function handleButtonDelete(taskID: any) {
+        setInitialTasksDeleteButton(initialTasksDeleteButton.filter((element) => {
+            return element.id !== taskID
+        }))
+    }
+    function addTaskButton(sourceName:any) {
+        setInitialTasksDeleteButton(
+            [
+                {id: v1(), name: sourceName, isDone: false},...initialTasksDeleteButton
+            ]
+        )
+    }
+
 
     if (buttonSelect === "All") {
-        initialTasksAlternative = initialTasks
+        initialTasksAlternative = initialTasksDeleteButton
     } else if (buttonSelect === "Active") {
-        initialTasksAlternative = initialTasks.filter((element:any) => {
+        initialTasksAlternative = initialTasksDeleteButton.filter((element: any) => {
             return !element.isDone
         })
     } else if (buttonSelect === "Completed") {
-        initialTasksAlternative = initialTasks.filter((element:any) => {
+        initialTasksAlternative = initialTasksDeleteButton.filter((element: any) => {
             return element.isDone
         })
     }
@@ -40,6 +55,8 @@ function App() {
 
             <ToDoList tasksToShow={initialTasksAlternative}
                       handleButtonSelectChild={handleButtonSelect}
+                      handleButtonDeleteChild={handleButtonDelete}
+                      addTaskButtonChild={addTaskButton}
             />
 
         </>

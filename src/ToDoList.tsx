@@ -9,35 +9,53 @@ function ToDoList(props: any) {
         <div>
             <div className="to-do-list">
                 <input
-                value={inputValue}
-                onChange={(event) => setInputValue(event.target.value)}
-                onKeyDown={(event)=>{
-                    if (event.key === 'Enter') {
-                        props.addTaskButtonChild(inputValue);
-                    }
-                }}
+                    value={inputValue}
+                    onChange={(event) => setInputValue(event.target.value)}
+                    onKeyDown={(event) => {
+                        if (event.key === 'Enter') {
+                            props.addTaskButtonChild(inputValue);
+                        }
+                    }}
                 />
-                <button onClick={()=>{props.addTaskButtonChild(inputValue)}}>+</button>
+                <button onClick={() => {
+                    props.addTaskButtonChild(inputValue)
+                }}>+
+                </button>
 
                 {props.tasksToShow.map((element: any) => {
 
                     return (
                         <>
                             <li key={element.id}>
-                                <input type='checkbox' checked={element.isDone}
-
+                                <input type='checkbox'
+                                       checked={element.isDone}
+                                       onChange={(event) => {
+                                           props.handleChangeStatusChild(element.id, event.currentTarget.checked);
+                                       }}
                                 />
                                 <span>{element.name}</span>
-                                <button onClick={()=>{props.handleButtonDeleteChild(element.id)}}>X</button>
+                                <button onClick={() => {
+                                    props.handleButtonDeleteChild(element.id)
+                                }}>X
+                                </button>
                             </li>
                         </>
                     )
                 })}
 
 
-                <button onClick={()=>{props.handleButtonSelectChild("All")}}>All</button>
-                <button onClick={()=>{props.handleButtonSelectChild("Active")}}>Active</button>
-                <button onClick={()=>{props.handleButtonSelectChild("Completed")}}>Completed</button>
+                <button onClick={() => {
+                    props.handleButtonSelectChild("All")
+                }}>All
+                </button>
+                <button onClick={() => {
+                    props.handleButtonSelectChild("Active")
+                }}>Active
+                </button>
+                <button onClick={() => {
+                    props.handleButtonSelectChild("Completed")
+                }}>Completed
+                </button>
             </div>
             <div>
 

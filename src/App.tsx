@@ -29,12 +29,22 @@ function App() {
             return element.id !== taskID
         }))
     }
-    function addTaskButton(sourceName:any) {
+
+    function addTaskButton(sourceName: any) {
         setInitialTasksDeleteButton(
             [
-                {id: v1(), name: sourceName, isDone: false},...initialTasksDeleteButton
+                {id: v1(), name: sourceName, isDone: false}, ...initialTasksDeleteButton
             ]
         )
+    }
+
+    function handleChangeStatus (taskId: string, newStatus: boolean) {
+        const foundTask = initialTasksAlternative.find((element:any) => {
+            return element.id === taskId
+        })
+        foundTask.isDone= newStatus;
+
+        setInitialTasksDeleteButton([...initialTasksDeleteButton])
     }
 
 
@@ -57,6 +67,7 @@ function App() {
                       handleButtonSelectChild={handleButtonSelect}
                       handleButtonDeleteChild={handleButtonDelete}
                       addTaskButtonChild={addTaskButton}
+                      handleChangeStatusChild={handleChangeStatus}
             />
 
         </>

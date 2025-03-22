@@ -11,63 +11,49 @@ let initialTasks = [
     {id: v1(), name: "Subject 6", isDone: true},
 ]
 
-
 function App() {
 
-    let initialTasksAlternative: any = initialTasks
+    let visibleTasks = initialTasks
 
-    const [buttonSelect, setButtonSelect] = useState<"All" | "Active" | "Completed">("All")
+    const [buttonsBelow, setButtonsBelow] = useState<"All" | "Active" | "Completed">("All");
 
-    const [initialTasksDeleteButton, setInitialTasksDeleteButton] = useState(initialTasks)
+    const [visibleTasksWithDelete, setVisibleTasksWithDelete] = useState(initialTasks)
 
-    function handleButtonSelect(message: "All" | "Active" | "Completed") {
-        setButtonSelect(message)
+    function buttonFilter(message: "All" | "Active" | "Completed") {
+        setButtonsBelow(message)
     }
 
-    function handleButtonDelete(taskID: any) {
-        setInitialTasksDeleteButton(initialTasksDeleteButton.filter((element) => {
+    function deleteButton(taskID: any) {
+        setVisibleTasksWithDelete(visibleTasksWithDelete.filter((element) => {
             return element.id !== taskID
         }))
     }
-
-    function addTaskButton(sourceName: any) {
-        setInitialTasksDeleteButton(
+    function addTask(sourceInput:string) {
+        setVisibleTasksWithDelete(
             [
-                {id: v1(), name: sourceName, isDone: false}, ...initialTasksDeleteButton
+                {id: v1(), name: sourceInput, isDone: false}, ...visibleTasksWithDelete
             ]
         )
     }
 
-    function handleChangeStatus (taskId: string, newStatus: boolean) {
-        const foundTask = initialTasksAlternative.find((element:any) => {
-            return element.id === taskId
-        })
-        foundTask.isDone= newStatus;
-
-        setInitialTasksDeleteButton([...initialTasksDeleteButton])
-    }
-
-
-    if (buttonSelect === "All") {
-        initialTasksAlternative = initialTasksDeleteButton
-    } else if (buttonSelect === "Active") {
-        initialTasksAlternative = initialTasksDeleteButton.filter((element: any) => {
+    if (buttonsBelow === "All") {
+        visibleTasks = visibleTasksWithDelete;
+    } else if (buttonsBelow === "Active") {
+        visibleTasks = visibleTasksWithDelete.filter((element: any) => {
             return !element.isDone
         })
-    } else if (buttonSelect === "Completed") {
-        initialTasksAlternative = initialTasksDeleteButton.filter((element: any) => {
+    } else if (buttonsBelow === "Completed") {
+        visibleTasks = visibleTasksWithDelete.filter((element: any) => {
             return element.isDone
         })
     }
 
-
     return (<>
 
-            <ToDoList tasksToShow={initialTasksAlternative}
-                      handleButtonSelectChild={handleButtonSelect}
-                      handleButtonDeleteChild={handleButtonDelete}
-                      addTaskButtonChild={addTaskButton}
-                      handleChangeStatusChild={handleChangeStatus}
+            <ToDoList tasksToShow={visibleTasks}
+                      buttonFilterChild={buttonFilter}
+                      deleteButtonChild={deleteButton}
+                      addTaskChild={addTask}
             />
 
         </>

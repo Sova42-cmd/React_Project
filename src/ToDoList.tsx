@@ -17,7 +17,8 @@ function ToDoList(props: any) {
                 // }}
                 />
 
-                <button onClick={props.addTaskChild(inputValue)}>+</button>
+                {/*<button onClick={props.addTaskChild(inputValue)}>+</button> // todo:Dav this was old version causing infinite loop*/}
+                <button onClick={()=>props.addTaskChild(inputValue)}>+</button>
 
                 {props.tasksToShow.map((element: any) => {
 

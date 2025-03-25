@@ -1,15 +1,8 @@
 import ToDoList from "./ToDoList.tsx";
 import {v1} from "uuid";
 import {useState} from "react";
-
-let initialTasks = [
-    {id: v1(), name: "Subject 1", isDone: false},
-    {id: v1(), name: "Subject 2", isDone: true},
-    {id: v1(), name: "Subject 3", isDone: true},
-    {id: v1(), name: "Subject 4", isDone: false},
-    {id: v1(), name: "Subject 5", isDone: false},
-    {id: v1(), name: "Subject 6", isDone: true},
-]
+import {initialTasks} from "./store/state.ts";
+import {Task} from "vitest";
 
 function App() {
 
@@ -29,6 +22,26 @@ function App() {
     // console.log(`updatedPerson`, updatedPerson)
 
 
+    // const tasks = [
+    //     {id: v1(), name: "Subject 1", isDone: false},
+    //     {id: v1(), name: "Subject 2", isDone: true},
+    //     {id: v1(), name: "Subject 3", isDone: true},
+    //     {id: v1(), name: "Subject 4", isDone: false},
+    //     {id: v1(), name: "Subject 5", isDone: false},
+    //     {id: v1(), name: "Subject 6", isDone: true},
+    // ]
+    //
+    //
+    // // const updateTask = tasks.map((element) => {
+    // //     return {...element, createdAt: "2025"}
+    // // })
+    //
+    // const updateTask = tasks.map((element) => {
+    //     return element.name === "Subject 3" ? {...element, createdAt: "2025"} : {...element, name:"Gago"}
+    // })
+    //
+    //
+    // console.log(updateTask)
 
 
     let visibleTasks = initialTasks

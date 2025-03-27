@@ -2,7 +2,6 @@ import ToDoList from "./ToDoList.tsx";
 import {v1} from "uuid";
 import {useState} from "react";
 import {initialTasks} from "./store/state.ts";
-import {Task} from "vitest";
 
 function App() {
 
@@ -80,12 +79,40 @@ function App() {
         })
     }
 
+
+    // function statusChange(taskId: string, newStatus: boolean) {
+    //
+    //     const taskToBeChanged = visibleTasks.find((task) => {
+    //         return task.id === taskId
+    //     })
+    //
+    //     if(taskToBeChanged){
+    //         taskToBeChanged.isDone = newStatus
+    //     }
+    //
+    //     setVisibleTasksWithDelete([...visibleTasksWithDelete])
+    //
+    // }
+
+
+    function statusChange(taskId: string, newStatus: boolean) {
+
+        const updatedVisibleTasksWithDelete = visibleTasksWithDelete.map((element) => {
+            return element.id === taskId ? {...element, isDone: newStatus} : element
+        })
+
+        setVisibleTasksWithDelete(updatedVisibleTasksWithDelete)
+
+    }
+
+
     return (<>
 
             <ToDoList tasksToShow={visibleTasks}
                       buttonFilterChild={buttonFilter}
                       deleteButtonChild={deleteButton}
                       addTaskChild={addTask}
+                      pleaseChangeMyStatus={statusChange}
             />
 
         </>
